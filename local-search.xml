@@ -29,31 +29,6 @@
   
   
   <entry>
-    <title>解决hexo报错spwan failed</title>
-    <link href="/2021/12/07/%E8%A7%A3%E5%86%B3hexo%E6%8A%A5%E9%94%99spwan%20failed/"/>
-    <url>/2021/12/07/%E8%A7%A3%E5%86%B3hexo%E6%8A%A5%E9%94%99spwan%20failed/</url>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="解决hexo报错spwan-failed"><a href="#解决hexo报错spwan-failed" class="headerlink" title="解决hexo报错spwan failed"></a>解决hexo报错spwan failed</h1><h4 id="报错1："><a href="#报错1：" class="headerlink" title="报错1："></a>报错1：</h4><p><img src="https://s2.loli.net/2022/03/15/sZkxnzA6Vv3jSce.png" alt="_66NF~4~____DWH4W__399W.png"></p><h4 id="解决方法如下："><a href="#解决方法如下：" class="headerlink" title="解决方法如下："></a>解决方法如下：</h4><ul><li>按照如下图操作：<br><img src="https://s2.loli.net/2022/03/15/5nF2LVqmNzctEoD.png" alt="O9C_TI_50U9ZE_N2V8PQ~@I.png"><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-comment"># 进入hexo根目录下</span><br>rm -rf <span class="hljs-string">.deploy_git/</span><br>git config <span class="hljs-params">--global</span> core.autocrlf <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure></li><li>最后重新生成提交<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sas">hexo clean <span class="hljs-variable">&amp;&amp;</span> hexo g <span class="hljs-variable">&amp;&amp;</span> hexo d<br></code></pre></td></tr></table></figure>在提交的时候有可能会出现下面的错误：<h4 id="报错2："><a href="#报错2：" class="headerlink" title="报错2："></a>报错2：</h4><img src="https://s2.loli.net/2022/03/15/FHb3nr2m7AtyJvs.png" alt="`_E7AGK7O7JYYJ__@_HUFQ1.png"><h4 id="解决方法如下：-1"><a href="#解决方法如下：-1" class="headerlink" title="解决方法如下："></a>解决方法如下：</h4></li><li>这是因为你的github设置出了问题</li><li>浏览器进入github.com</li><li>登陆github -&gt; “+” -&gt;settings</li><li>后续操作如下图：<br><img src="https://s2.loli.net/2022/03/15/rcsGHuLNnVWSly6.png" alt="888.png"></li><li>再把下面图中的两个设置取消勾选<br><img src="https://s2.loli.net/2022/03/15/5c1SRyixemqB24D.png" alt="999.png"><br><img src="https://s2.loli.net/2022/03/15/1VstJCeSovcOy3a.png" alt="000.png"><br>通过上面的操作，在重新运行下面代码就大功告成了，再刷新页面应该就显示提交的内容了<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 1c"><span class="hljs-meta"># 重新生成提交</span><br>hexo clean <span class="hljs-meta">&amp;&amp; hexo g &amp;&amp; hexo d</span><br></code></pre></td></tr></table></figure></li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>Hexo文章</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Hexo文章</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>控制台运行py文件问题</title>
     <link href="/2021/12/07/python%E6%96%87%E4%BB%B6%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E9%97%AE%E9%A2%98/"/>
     <url>/2021/12/07/python%E6%96%87%E4%BB%B6%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E9%97%AE%E9%A2%98/</url>
@@ -71,6 +46,31 @@
     <tags>
       
       <tag>python问题</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>解决hexo报错spwan failed</title>
+    <link href="/2021/12/07/%E8%A7%A3%E5%86%B3hexo%E6%8A%A5%E9%94%99spwan%20failed/"/>
+    <url>/2021/12/07/%E8%A7%A3%E5%86%B3hexo%E6%8A%A5%E9%94%99spwan%20failed/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="解决hexo报错spwan-failed"><a href="#解决hexo报错spwan-failed" class="headerlink" title="解决hexo报错spwan failed"></a>解决hexo报错spwan failed</h1><h4 id="报错1："><a href="#报错1：" class="headerlink" title="报错1："></a>报错1：</h4><p><img src="https://s2.loli.net/2022/03/15/sZkxnzA6Vv3jSce.png" alt="_66NF~4~____DWH4W__399W.png"></p><h4 id="解决方法如下："><a href="#解决方法如下：" class="headerlink" title="解决方法如下："></a>解决方法如下：</h4><ul><li>按照如下图操作：<br><img src="https://s2.loli.net/2022/03/15/5nF2LVqmNzctEoD.png" alt="O9C_TI_50U9ZE_N2V8PQ~@I.png"><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-comment"># 进入hexo根目录下</span><br>rm -rf <span class="hljs-string">.deploy_git/</span><br>git config <span class="hljs-params">--global</span> core.autocrlf <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure></li><li>最后重新生成提交<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sas">hexo clean <span class="hljs-variable">&amp;&amp;</span> hexo g <span class="hljs-variable">&amp;&amp;</span> hexo d<br></code></pre></td></tr></table></figure>在提交的时候有可能会出现下面的错误：<h4 id="报错2："><a href="#报错2：" class="headerlink" title="报错2："></a>报错2：</h4><img src="https://s2.loli.net/2022/03/15/FHb3nr2m7AtyJvs.png" alt="`_E7AGK7O7JYYJ__@_HUFQ1.png"><h4 id="解决方法如下：-1"><a href="#解决方法如下：-1" class="headerlink" title="解决方法如下："></a>解决方法如下：</h4></li><li>这是因为你的github设置出了问题</li><li>浏览器进入github.com</li><li>登陆github -&gt; “+” -&gt;settings</li><li>后续操作如下图：<br><img src="https://s2.loli.net/2022/03/15/rcsGHuLNnVWSly6.png" alt="888.png"></li><li>再把下面图中的两个设置取消勾选<br><img src="https://s2.loli.net/2022/03/15/5c1SRyixemqB24D.png" alt="999.png"><br><img src="https://s2.loli.net/2022/03/15/1VstJCeSovcOy3a.png" alt="000.png"><br>通过上面的操作，在重新运行下面代码就大功告成了，再刷新页面应该就显示提交的内容了<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 1c"><span class="hljs-meta"># 重新生成提交</span><br>hexo clean <span class="hljs-meta">&amp;&amp; hexo g &amp;&amp; hexo d</span><br></code></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hexo文章</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hexo文章</tag>
       
     </tags>
     
