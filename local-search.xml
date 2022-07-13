@@ -29,31 +29,6 @@
   
   
   <entry>
-    <title>控制台运行py文件问题</title>
-    <link href="/2021/12/07/python%E6%96%87%E4%BB%B6%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E9%97%AE%E9%A2%98/"/>
-    <url>/2021/12/07/python%E6%96%87%E4%BB%B6%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E9%97%AE%E9%A2%98/</url>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="cmd命令控制台输出py文件问题"><a href="#cmd命令控制台输出py文件问题" class="headerlink" title="cmd命令控制台输出py文件问题"></a>cmd命令控制台输出py文件问题</h1><h1 id="1、通过python命令运行py文件"><a href="#1、通过python命令运行py文件" class="headerlink" title="1、通过python命令运行py文件"></a>1、通过python命令运行py文件</h1><ul><li>问题：仅仅一个简单的print输出在控制台中没有输出结果，解决方法如下<h1 id="2、检查是否是使用的sublime编写的py文件"><a href="#2、检查是否是使用的sublime编写的py文件" class="headerlink" title="2、检查是否是使用的sublime编写的py文件"></a>2、检查是否是使用的sublime编写的py文件</h1></li><li>sublime编写的py文件运行需要配置python环境，所以检查是否只是在初学python时只是安装了anaconda，没有单独安装python<h1 id="3、检查python是否安装"><a href="#3、检查python是否安装" class="headerlink" title="3、检查python是否安装"></a>3、检查python是否安装</h1></li><li>在环境变量中输入python看是否有输出，无输出则代表python环境变量没有配好，需要把python安装路径加到Path中<h1 id="4、查看anaconda"><a href="#4、查看anaconda" class="headerlink" title="4、查看anaconda"></a>4、查看anaconda</h1></li><li>查看自己安装的anaconda中知否有内置的IPython环境，这样也可以正常运行</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>python问题</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>python问题</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>解决hexo报错spwan failed</title>
     <link href="/2021/12/07/%E8%A7%A3%E5%86%B3hexo%E6%8A%A5%E9%94%99spwan%20failed/"/>
     <url>/2021/12/07/%E8%A7%A3%E5%86%B3hexo%E6%8A%A5%E9%94%99spwan%20failed/</url>
@@ -71,6 +46,31 @@
     <tags>
       
       <tag>Hexo文章</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>控制台运行py文件问题</title>
+    <link href="/2021/12/07/python%E6%96%87%E4%BB%B6%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E9%97%AE%E9%A2%98/"/>
+    <url>/2021/12/07/python%E6%96%87%E4%BB%B6%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="cmd命令控制台输出py文件问题"><a href="#cmd命令控制台输出py文件问题" class="headerlink" title="cmd命令控制台输出py文件问题"></a>cmd命令控制台输出py文件问题</h1><h1 id="1、通过python命令运行py文件"><a href="#1、通过python命令运行py文件" class="headerlink" title="1、通过python命令运行py文件"></a>1、通过python命令运行py文件</h1><ul><li>问题：仅仅一个简单的print输出在控制台中没有输出结果，解决方法如下<h1 id="2、检查是否是使用的sublime编写的py文件"><a href="#2、检查是否是使用的sublime编写的py文件" class="headerlink" title="2、检查是否是使用的sublime编写的py文件"></a>2、检查是否是使用的sublime编写的py文件</h1></li><li>sublime编写的py文件运行需要配置python环境，所以检查是否只是在初学python时只是安装了anaconda，没有单独安装python<h1 id="3、检查python是否安装"><a href="#3、检查python是否安装" class="headerlink" title="3、检查python是否安装"></a>3、检查python是否安装</h1></li><li>在环境变量中输入python看是否有输出，无输出则代表python环境变量没有配好，需要把python安装路径加到Path中<h1 id="4、查看anaconda"><a href="#4、查看anaconda" class="headerlink" title="4、查看anaconda"></a>4、查看anaconda</h1></li><li>查看自己安装的anaconda中知否有内置的IPython环境，这样也可以正常运行</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>python问题</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python问题</tag>
       
     </tags>
     
