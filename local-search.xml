@@ -79,31 +79,6 @@
   
   
   <entry>
-    <title>gitlab的使用</title>
-    <link href="/2021/12/06/gitlab%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
-    <url>/2021/12/06/gitlab%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="gitlab的基本应用"><a href="#gitlab的基本应用" class="headerlink" title="gitlab的基本应用"></a>gitlab的基本应用</h1><h3 id="1-创建gitlab账号，并设置自己的SSH"><a href="#1-创建gitlab账号，并设置自己的SSH" class="headerlink" title="1.创建gitlab账号，并设置自己的SSH"></a>1.创建gitlab账号，并设置自己的SSH</h3><ul><li><em><a href="https://www.cnblogs.com/qianqiu-1026/p/8543588.html">gitlab注册</a></em></li><li>SSH的生成及使用上面链接中内含教程链接，此处不多说</li></ul><h3 id="2-创建仓库"><a href="#2-创建仓库" class="headerlink" title="2.创建仓库"></a>2.创建仓库</h3><ul><li>在自己的项目组里面创建自己的仓库（new project）<br><img src="https://s2.loli.net/2022/04/04/gAfHaJSn4KqbDdL.png" alt="K_K4_8IP41SEII_RLMZ4@BG.png"></li><li>此处举例创建名为demo（只有一个readme文件）</li><li>打开git bash命令窗口进行如下操作：<br>(1) 从gitlab仓库中克隆到本地（此处克隆到桌面）<br><img src="https://s2.loli.net/2022/04/04/uXyC7mwYAczNnei.png" alt="JBNTJKP2_B_RG62J23372WR.png"><br><img src="https://s2.loli.net/2022/04/04/AxO2YV9XyhvSqcp.png" alt="W7SF_L`2VJ6232_1SKVXG09.png"><br>注：此处的地址就是clone的HTTPS<br>(2) clone后会在桌面上显示你的远程仓库文件<br>(3) 把你的项目文件放到桌面的demo文件中<br>(4) 可以通过以下命令看一下demo文件的状态<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs maxima">cd <span class="hljs-built_in">demo</span><br>git <span class="hljs-built_in">status</span><br></code></pre></td></tr></table></figure><img src="https://s2.loli.net/2022/04/04/5Kupj1nxhgG23Ok.png" alt="@O1CXNN__VU1~_HFMY_2L_R.png"><br>注：此时项目文件中的README.md文件替换了demo中的README.md文件，此时已经在本地的暂存区了<br>而下面的一些文件在demo文件中没有，只是存在于本地目录下<br>(5) 把在本地目录下新加的文件add到暂存区<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">git <span class="hljs-builtin-name">add</span> .<br>注：.代表全部文件<br></code></pre></td></tr></table></figure>(6) 把暂存区的文件commit到仓库中<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">git <span class="hljs-keyword">commit</span> -m &quot;第一次提交微信小程序代码&quot;<br>注： &quot;&quot;里面的东西一定要写清楚，这代表着你这次干的什么事，可以看<span class="hljs-keyword">commit</span>记录<br></code></pre></td></tr></table></figure>(7) 最后push到gitlab远程仓库<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git push origin <span class="hljs-keyword">master</span><br><span class="hljs-title">注：origin</span>代表远程，<span class="hljs-literal">master</span>代表push的仓库名<br></code></pre></td></tr></table></figure>(8) 最后你就可以在gitlab界面中刷新看到你的项目文件了，如下图所示：<br><img src="https://s2.loli.net/2022/04/04/Glkja8VysJARFiP.png" alt="W18QH__7_15L@B092OWYK~O.png"></li></ul><h3 id="3-创建分支"><a href="#3-创建分支" class="headerlink" title="3.创建分支"></a>3.创建分支</h3><ul><li>因为一个项目工程不是一个人完成的，需要一个团队进行不同的工作，所以团队成员需要创建一个自己的分支来更新自己的项目进度<br>创建方法如下：<br>(1) 打开你的gitbash命令窗口（在主仓库文件下）<br>(2) 创建分支（名字自定义）<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git branch chen</span><br></code></pre></td></tr></table></figure>(3) 转换到分支下<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git checkout chen</span><br></code></pre></td></tr></table></figure>(4)最后push到你的gitlab远程仓库中即可<br>注：在本地通过命令行创建分支后会同步到远程仓库中<br>可以创建合并请求，如下图所示：<br><img src="https://s2.loli.net/2022/04/04/i1ICVk6wtAsSNzQ.png" alt="G_5NG1FCSKXSULB_RK_K6`F.png"></li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>gitlab</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>gitlab</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>colab</title>
     <link href="/2021/12/06/colab/"/>
     <url>/2021/12/06/colab/</url>
@@ -121,6 +96,31 @@
     <tags>
       
       <tag>colab的配置与使用</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>gitlab的使用</title>
+    <link href="/2021/12/06/gitlab%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
+    <url>/2021/12/06/gitlab%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="gitlab的基本应用"><a href="#gitlab的基本应用" class="headerlink" title="gitlab的基本应用"></a>gitlab的基本应用</h1><h3 id="1-创建gitlab账号，并设置自己的SSH"><a href="#1-创建gitlab账号，并设置自己的SSH" class="headerlink" title="1.创建gitlab账号，并设置自己的SSH"></a>1.创建gitlab账号，并设置自己的SSH</h3><ul><li><em><a href="https://www.cnblogs.com/qianqiu-1026/p/8543588.html">gitlab注册</a></em></li><li>SSH的生成及使用上面链接中内含教程链接，此处不多说</li></ul><h3 id="2-创建仓库"><a href="#2-创建仓库" class="headerlink" title="2.创建仓库"></a>2.创建仓库</h3><ul><li>在自己的项目组里面创建自己的仓库（new project）<br><img src="https://s2.loli.net/2022/04/04/gAfHaJSn4KqbDdL.png" alt="K_K4_8IP41SEII_RLMZ4@BG.png"></li><li>此处举例创建名为demo（只有一个readme文件）</li><li>打开git bash命令窗口进行如下操作：<br>(1) 从gitlab仓库中克隆到本地（此处克隆到桌面）<br><img src="https://s2.loli.net/2022/04/04/uXyC7mwYAczNnei.png" alt="JBNTJKP2_B_RG62J23372WR.png"><br><img src="https://s2.loli.net/2022/04/04/AxO2YV9XyhvSqcp.png" alt="W7SF_L`2VJ6232_1SKVXG09.png"><br>注：此处的地址就是clone的HTTPS<br>(2) clone后会在桌面上显示你的远程仓库文件<br>(3) 把你的项目文件放到桌面的demo文件中<br>(4) 可以通过以下命令看一下demo文件的状态<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs maxima">cd <span class="hljs-built_in">demo</span><br>git <span class="hljs-built_in">status</span><br></code></pre></td></tr></table></figure><img src="https://s2.loli.net/2022/04/04/5Kupj1nxhgG23Ok.png" alt="@O1CXNN__VU1~_HFMY_2L_R.png"><br>注：此时项目文件中的README.md文件替换了demo中的README.md文件，此时已经在本地的暂存区了<br>而下面的一些文件在demo文件中没有，只是存在于本地目录下<br>(5) 把在本地目录下新加的文件add到暂存区<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">git <span class="hljs-builtin-name">add</span> .<br>注：.代表全部文件<br></code></pre></td></tr></table></figure>(6) 把暂存区的文件commit到仓库中<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">git <span class="hljs-keyword">commit</span> -m &quot;第一次提交微信小程序代码&quot;<br>注： &quot;&quot;里面的东西一定要写清楚，这代表着你这次干的什么事，可以看<span class="hljs-keyword">commit</span>记录<br></code></pre></td></tr></table></figure>(7) 最后push到gitlab远程仓库<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git push origin <span class="hljs-keyword">master</span><br><span class="hljs-title">注：origin</span>代表远程，<span class="hljs-literal">master</span>代表push的仓库名<br></code></pre></td></tr></table></figure>(8) 最后你就可以在gitlab界面中刷新看到你的项目文件了，如下图所示：<br><img src="https://s2.loli.net/2022/04/04/Glkja8VysJARFiP.png" alt="W18QH__7_15L@B092OWYK~O.png"></li></ul><h3 id="3-创建分支"><a href="#3-创建分支" class="headerlink" title="3.创建分支"></a>3.创建分支</h3><ul><li>因为一个项目工程不是一个人完成的，需要一个团队进行不同的工作，所以团队成员需要创建一个自己的分支来更新自己的项目进度<br>创建方法如下：<br>(1) 打开你的gitbash命令窗口（在主仓库文件下）<br>(2) 创建分支（名字自定义）<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git branch chen</span><br></code></pre></td></tr></table></figure>(3) 转换到分支下<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git checkout chen</span><br></code></pre></td></tr></table></figure>(4)最后push到你的gitlab远程仓库中即可<br>注：在本地通过命令行创建分支后会同步到远程仓库中<br>可以创建合并请求，如下图所示：<br><img src="https://s2.loli.net/2022/04/04/i1ICVk6wtAsSNzQ.png" alt="G_5NG1FCSKXSULB_RK_K6`F.png"></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>gitlab</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>gitlab</tag>
       
     </tags>
     
