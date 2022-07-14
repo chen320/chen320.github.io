@@ -1,0 +1,594 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/null">
+  <link rel="icon" href="https://ts1.cn.mm.bing.net/th/id/R-C.f408176d301eba722a97bcc4d045cbc7?rik=J%2bK47GXYGgKyOw&amp;riu=http%3a%2f%2fstatic.oschina.net%2fuploads%2fspace%2f2015%2f0629%2f165329_EdoG_1767531.png&amp;ehk=ZIVbH06spduNSMSM0N3kkzz8ylv0o4zwwb%2fySRRRV00%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Chentao">
+  <meta name="keywords" content="">
+  <meta name="description" content="下面这些代码均是在学习的过程中做的笔记和练习123import numpy as npimport pandas as pdimport matplotlib.pyplot as plt 1234#   图标窗口1      plt.show()plt.plot(np.random.rand(10))plt.show()#直接生成图表 1234567#  图标窗口2  魔法函数，嵌入图表   ##">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-重点工具(Matplotlib)">
+<meta property="og:url" content="http://chen320.github.io/2022/07/15/python%E9%87%8D%E7%82%B9%E5%B7%A5%E5%85%B7%E6%8E%8C%E6%8F%A1/index.html">
+<meta property="og:site_name" content="Chen&#39;s Blog">
+<meta property="og:description" content="下面这些代码均是在学习的过程中做的笔记和练习123import numpy as npimport pandas as pdimport matplotlib.pyplot as plt 1234#   图标窗口1      plt.show()plt.plot(np.random.rand(10))plt.show()#直接生成图表 1234567#  图标窗口2  魔法函数，嵌入图表   ##">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.postimg.cc/4xZMxjfp/1.png">
+<meta property="og:image" content="https://i.postimg.cc/4dtbtNwy/2.png">
+<meta property="og:image" content="https://i.postimg.cc/DZd4nWBr/3.png">
+<meta property="og:image" content="https://i.postimg.cc/htWnbCSG/4.png">
+<meta property="og:image" content="https://i.postimg.cc/vZBKnfnm/5.png">
+<meta property="og:image" content="https://i.postimg.cc/0yDwcHDX/6.png">
+<meta property="og:image" content="https://i.postimg.cc/sXhxgMm6/7.png">
+<meta property="og:image" content="https://i.postimg.cc/4dq8pSz4/8.png">
+<meta property="og:image" content="https://i.postimg.cc/9X10FHYj/9.png">
+<meta property="article:published_time" content="2022-07-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-14T14:29:52.542Z">
+<meta property="article:author" content="Chentao">
+<meta property="article:tag" content="python工具">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.postimg.cc/4xZMxjfp/1.png">
+  
+  <title>python-重点工具(Matplotlib) - Chen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/gundong.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/dazi.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chen320.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"7GgfPxgdU2CcwlhdqMFDascs-gzGzoHsz","app_key":"iQjxbFjeMOGRmMhYhY2jA9sp","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>水寿先生</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                个人
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.pixabay.com/photo/2021/12/27/21/37/church-6898286_960_720.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="python-重点工具(Matplotlib)">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-15 00:00" pubdate>
+        July 15, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      17k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      53 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        阅读量:<span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">python-重点工具(Matplotlib)</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：July 14, 2022 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id="下面这些代码均是在学习的过程中做的笔记和练习"><a href="#下面这些代码均是在学习的过程中做的笔记和练习" class="headerlink" title="下面这些代码均是在学习的过程中做的笔记和练习"></a>下面这些代码均是在学习的过程中做的笔记和练习</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#   图标窗口1      plt.show()</span><br>plt.plot(np.random.rand(<span class="hljs-number">10</span>))<br>plt.show()<br><span class="hljs-comment">#直接生成图表</span><br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://postimg.cc/LnCvyCZs"><img src="https://i.postimg.cc/4xZMxjfp/1.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="1.png"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  图标窗口2  魔法函数，嵌入图表   ######</span><br>%matplotlib inline<br><br>x = np.random.randn(<span class="hljs-number">1000</span>)<br>y = np.random.randn(<span class="hljs-number">1000</span>)<br>plt.scatter(x,y)<br><span class="hljs-comment">#直接嵌入图表</span><br></code></pre></td></tr></table></figure><br><a target="_blank" rel="noopener" href="https://postimg.cc/G8LynRWn"><img src="https://i.postimg.cc/4dtbtNwy/2.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="2.png"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  图标窗口3  魔法函数,弹出可交互的matplotlib窗口</span><br><br>%matplotlib notebook<br>s = pd.Series(np.random.randn(<span class="hljs-number">100</span>))<br>s.plot(style = <span class="hljs-string">&#x27;k-o&#x27;</span>,figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">5</span>))<br><span class="hljs-comment">#可做一定调整</span><br></code></pre></td></tr></table></figure><br><a target="_blank" rel="noopener" href="https://postimg.cc/9R0QBf30"><img src="https://i.postimg.cc/DZd4nWBr/3.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="3.png"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  图标窗口4  魔法函数,弹出matplotlib控制台</span><br><br>%matplotlib qt5<br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">50</span>,<span class="hljs-number">2</span>),columns=[<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>])<br>df.hist(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">5</span>),color=<span class="hljs-string">&#x27;r&#x27;</span>,alpha=<span class="hljs-number">0.8</span>)<br><span class="hljs-comment">#网页嵌入的交互性窗口  和  控制台，  只能显示一个</span><br><span class="hljs-comment">#如果已经设置了显示方式，要重启一下再运行</span><br><br><span class="hljs-comment">#plt.close() 关闭窗口</span><br><span class="hljs-comment">#plt.gcf().clear()  清空</span><br></code></pre></td></tr></table></figure></p>
+<h4 id="图表的基本元素"><a href="#图表的基本元素" class="headerlink" title="图表的基本元素"></a>图表的基本元素</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 图名 ，图例 ， 轴标签 ， 轴边界 ， 轴刻度 ， 轴刻度标签。。。。。</span><br><br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">10</span>,<span class="hljs-number">2</span>),columns=[<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>])<br>f = plt.figure(figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">10</span>))<br>fig = df.plot(figsize=(<span class="hljs-number">6</span>,<span class="hljs-number">4</span>))<br><br><span class="hljs-comment">#figsize  设置窗口大小</span><br><br><span class="hljs-built_in">print</span>(fig,<span class="hljs-built_in">type</span>(fig))<br><span class="hljs-built_in">print</span>(f,<span class="hljs-built_in">type</span>(f))<br><br><br>plt.title(<span class="hljs-string">&#x27;aa&#x27;</span>)   <span class="hljs-comment">#名字</span><br>plt.xlabel(<span class="hljs-string">&#x27;x&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;y&#x27;</span>)<br><br>plt.xlim([<span class="hljs-number">0</span>,<span class="hljs-number">12</span>])<span class="hljs-comment"># x轴边界</span><br>plt.ylim([<span class="hljs-number">0</span>,<span class="hljs-number">1.5</span>])<br>plt.xticks(<span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>))  <span class="hljs-comment">#x刻度</span><br>plt.yticks([<span class="hljs-number">0</span>,<span class="hljs-number">0.2</span>,<span class="hljs-number">0.4</span>,<span class="hljs-number">0.6</span>,<span class="hljs-number">0.8</span>,<span class="hljs-number">1.0</span>,<span class="hljs-number">1.2</span>])<br><br>fig.set_xticklabels(<span class="hljs-string">&quot;%.1f&quot;</span>%i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>))   <span class="hljs-comment">#x轴刻度标签</span><br>fig.set_yticklabels(<span class="hljs-string">&quot;%.2f&quot;</span>%i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> [<span class="hljs-number">0</span>,<span class="hljs-number">0.2</span>,<span class="hljs-number">0.4</span>,<span class="hljs-number">0.6</span>,<span class="hljs-number">0.8</span>,<span class="hljs-number">1.0</span>,<span class="hljs-number">1.2</span>])<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://postimg.cc/D8gR7P4V"><img src="https://i.postimg.cc/htWnbCSG/4.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="4.png"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 其他元素可视性</span><br><br>x = np.linspace(-np.pi,np.pi,<span class="hljs-number">256</span>,endpoint = <span class="hljs-literal">True</span>)<br>c,  s = np.cos(x),np.sin(x)<br>plt.plot(x,c)<br>plt.plot(x,s)<br><span class="hljs-comment">#  通过ndarry创建图表</span><br><br>plt.grid()  <span class="hljs-comment">#设置图网</span><br><br><span class="hljs-keyword">import</span> matplotlib<br>frame = plt.gca()<br><br>frame.axes.get_xaxis().set_visible(<span class="hljs-literal">False</span>)  <span class="hljs-comment"># x轴不见</span><br>frame.axes.get_yaxis().set_visible(<span class="hljs-literal">False</span>)  <span class="hljs-comment">#y轴不见</span><br></code></pre></td></tr></table></figure><br><a target="_blank" rel="noopener" href="https://postimg.cc/WhBSLDXR"><img src="https://i.postimg.cc/vZBKnfnm/5.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="5.png"></a></p>
+<h4 id="图表的样式参数"><a href="#图表的样式参数" class="headerlink" title="图表的样式参数"></a>图表的样式参数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># linestyle参数</span><br><br>plt.plot([i**<span class="hljs-number">2</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">100</span>)],<br>        linestyle = <span class="hljs-string">&#x27;--&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://postimg.cc/zyDvf7dT"><img src="https://i.postimg.cc/0yDwcHDX/6.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="6.png"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  marker参数</span><br><br>s = pd.Series(np.random.rand(<span class="hljs-number">10</span>).cumsum())<br>s.plot(linestyle = <span class="hljs-string">&#x27;--&#x27;</span>,<br>      marker = <span class="hljs-string">&#x27;x&#x27;</span>)   <span class="hljs-comment">#   * o</span><br></code></pre></td></tr></table></figure><br><a target="_blank" rel="noopener" href="https://postimg.cc/sQ3snDt7"><img src="https://i.postimg.cc/sXhxgMm6/7.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="7.png"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># color参数</span><br><br>plt.hist(np.random.rand(<span class="hljs-number">30</span>),<br>        color = <span class="hljs-string">&#x27;r&#x27;</span>,alpha=<span class="hljs-number">0.8</span>)<br><span class="hljs-comment">#alpha:  0-1 透明度</span><br><span class="hljs-comment">#常用颜色简写： red-r, green-g , black--b , yellow--y</span><br><br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">30</span>,<span class="hljs-number">4</span>),columns = <span class="hljs-built_in">list</span>(<span class="hljs-string">&#x27;ABCD&#x27;</span>))<br>df = df.cumsum()<br>df.plot(style = <span class="hljs-string">&#x27;--.&#x27;</span>,alpha = <span class="hljs-number">0.8</span>,colormap = <span class="hljs-string">&#x27;GnBu&#x27;</span>)<br><span class="hljs-comment">#colormap:  颜色板</span><br></code></pre></td></tr></table></figure><br><a target="_blank" rel="noopener" href="https://postimg.cc/hz8bBMyN"><img src="https://i.postimg.cc/4dq8pSz4/8.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="8.png"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  style 参数，可以包含linestyle,marker , color</span><br><br>ts = pd.Series(np.random.rand(<span class="hljs-number">1000</span>).cumsum(),index = pd.date_range(<span class="hljs-string">&#x27;1/1/2021&#x27;</span>,periods = <span class="hljs-number">1000</span>))<br>ts.plot(style = <span class="hljs-string">&#x27;--g.&#x27;</span>,grid = <span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure><br><a target="_blank" rel="noopener" href="https://postimg.cc/8sJNt3Yy"><img src="https://i.postimg.cc/9X10FHYj/9.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="9.png"></a></p>
+<h3 id="此后仅仅展示代码，效果可以自行尝试"><a href="#此后仅仅展示代码，效果可以自行尝试" class="headerlink" title="此后仅仅展示代码，效果可以自行尝试"></a>此后仅仅展示代码，效果可以自行尝试</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  整体风格样式</span><br><br><span class="hljs-keyword">import</span> matplotlib.style <span class="hljs-keyword">as</span> ps1<br><span class="hljs-built_in">print</span>(plt.style.available)<br><span class="hljs-comment">#查看样式列表</span><br><br>ps1.use(<span class="hljs-string">&#x27;ggplot&#x27;</span>)<br>ts = pd.Series(np.random.rand(<span class="hljs-number">10</span>).cumsum(),index = pd.date_range(<span class="hljs-string">&#x27;1/1/2021&#x27;</span>,periods = <span class="hljs-number">10</span>))<br>ts.plot(style = <span class="hljs-string">&#x27;--g.&#x27;</span>,grid = <span class="hljs-literal">True</span>,figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">6</span>))<br></code></pre></td></tr></table></figure>
+<h3 id="刻度、注释、图表输出"><a href="#刻度、注释、图表输出" class="headerlink" title="刻度、注释、图表输出"></a>刻度、注释、图表输出</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  刻度</span><br><br><span class="hljs-keyword">from</span> matplotlib.ticker <span class="hljs-keyword">import</span> MultipleLocator,FormatStrFormatter<br><br>t = np.arange(<span class="hljs-number">0.0</span>,<span class="hljs-number">100.0</span>,<span class="hljs-number">1</span>)<br>s = np.sin(<span class="hljs-number">0.1</span>*np.pi*t)*np.exp(-t*<span class="hljs-number">0.01</span>)<br>ax = plt.subplot(<span class="hljs-number">111</span>)<br>plt.plot(t,s,<span class="hljs-string">&#x27;--*&#x27;</span>)<br>plt.grid(<span class="hljs-literal">True</span>,linestyle = <span class="hljs-string">&quot;--&quot;</span>,color = <span class="hljs-string">&quot;gray&quot;</span>,linewidth = <span class="hljs-string">&quot;0.5&quot;</span>,axis = <span class="hljs-string">&quot;both&quot;</span>)<br><span class="hljs-comment">#网格</span><br><span class="hljs-comment">#plt.legend()  图例</span><br><br>xmajorLocator = MultipleLocator(<span class="hljs-number">10</span>)   <span class="hljs-comment">#将x的主标签设置为10的倍数</span><br>amajorFormatter = FormatStrFormatter(<span class="hljs-string">&#x27;%.0f&#x27;</span>)<br>xminorLocator = MultipleLocator(<span class="hljs-number">5</span>)  <span class="hljs-comment">#将想的次标签设置为5的倍数</span><br><br>ax.xaxis.set_major_locator(xmajorLocator)   <span class="hljs-comment">#设置x轴主刻度</span><br>ax.xaxis.set_major_formatter(xmajorFormatter)  <span class="hljs-comment">#设置x轴标签文本格式</span><br>ax.xaxis.set_minor_locator(xminorLocator)<span class="hljs-comment"># 设置x轴次刻度</span><br><br>ax.xaxis.grid(<span class="hljs-literal">True</span>,which =<span class="hljs-string">&#x27;both&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 注释</span><br><br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">10</span>,<span class="hljs-number">2</span>))<br>df.plot(style = <span class="hljs-string">&#x27;--o&#x27;</span>)<br>plt.text(<span class="hljs-number">5</span>,<span class="hljs-number">0.5</span>,<span class="hljs-string">&#x27;hshhhh&#x27;</span>,fontsize=<span class="hljs-number">10</span>)<br><span class="hljs-comment">#注释  （横坐标，纵坐标，注释字符串）</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#   图表输出</span><br><br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">100</span>,<span class="hljs-number">4</span>),columns = <span class="hljs-built_in">list</span>(<span class="hljs-string">&#x27;ABCD&#x27;</span>))<br>df = df.cumsum()<br>df.plot(style = <span class="hljs-string">&#x27;--.&#x27;</span>,alpha = <span class="hljs-number">0.5</span>)<br>plt.legend(loc = <span class="hljs-string">&#x27;upper left&#x27;</span>)<br>plt.savefig(<span class="hljs-string">&#x27;&#x27;</span>,<br>           dpi=<span class="hljs-number">400</span>,                  <span class="hljs-comment">#分辨率</span><br>           facecolor = <span class="hljs-string">&#x27;g&#x27;</span>,  <br>           bbox_inches = <span class="hljs-string">&#x27;tight&#x27;</span>,     <span class="hljs-comment">#图表需要保存的地方，如果设置成‘tight’，则尝试剪除图标周围的空白部分</span><br>           edgecolor = <span class="hljs-string">&#x27;b&#x27;</span>)   <span class="hljs-comment">#图像的背景图，默认为；w  白色</span><br></code></pre></td></tr></table></figure>
+<h3 id="子图"><a href="#子图" class="headerlink" title="子图"></a>子图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">fig1 = plt.figure(num =<span class="hljs-number">1</span>,figsize=(<span class="hljs-number">4</span>,<span class="hljs-number">2</span>))<br>plt.plot(np.random.rand(<span class="hljs-number">50</span>).cumsum(),<span class="hljs-string">&#x27;k--&#x27;</span>)<br>fig2 = plt.figure(num =<span class="hljs-number">2</span>,figsize=(<span class="hljs-number">4</span>,<span class="hljs-number">2</span>))<br>plt.plot(<span class="hljs-number">50</span>-np.random.rand(<span class="hljs-number">50</span>).cumsum(),<span class="hljs-string">&#x27;k--&#x27;</span>)<br><br><span class="hljs-comment"># figsize设置图标大小</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  子图创建1  - 先建立子图然后填充图表</span><br>fig = plt.figure(figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">6</span>),facecolor = <span class="hljs-string">&#x27;g&#x27;</span>)<br><br>ax1 = fig.add_subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)<br>plt.plot(np.random.rand(<span class="hljs-number">50</span>).cumsum(),<span class="hljs-string">&#x27;k--&#x27;</span>)<br>plt.plot(np.random.rand(<span class="hljs-number">50</span>).cumsum(),<span class="hljs-string">&#x27;b--&#x27;</span>)<br><br>ax2  = fig.add_subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)<br>ax2.hist(np.random.rand(<span class="hljs-number">50</span>),alpha=<span class="hljs-number">0.5</span>)<br><br>ax4  = fig.add_subplot(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>)<br>df2 = pd.DataFrame(np.random.rand(<span class="hljs-number">10</span>,<span class="hljs-number">4</span>),columns = [<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>])<br>ax4.plot(df2,alpha=<span class="hljs-number">0.5</span>,linestyle=<span class="hljs-string">&#x27;--&#x27;</span>,marker=<span class="hljs-string">&#x27;.&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  子图创建2 - 创建一个新的figure ， 并返回一个subplot对象的numpy数组 --plt.subplot#######</span><br><br>fig,axes = plt.subplots(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">4</span>))<br>ts = pd.Series(np.random.rand(<span class="hljs-number">100</span>).cumsum())<br><span class="hljs-built_in">print</span>(axes,axes.shape,<span class="hljs-built_in">type</span>(axes))<br><span class="hljs-comment">#生成图表对象的数组</span><br><br>ax1 = axes[<span class="hljs-number">0</span>,<span class="hljs-number">2</span>]<br>ax1.plot(ts)<br>axes[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>].plot(np.random.rand(<span class="hljs-number">100</span>))<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  plt.subplot  参数调整</span><br>fig,axes = plt.subplots(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,sharex=<span class="hljs-literal">True</span>,sharey=<span class="hljs-literal">True</span>)  <span class="hljs-comment">#是否共享x，y刻度</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>):<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>):<br>        axes[i,j].hist(np.random.rand(<span class="hljs-number">50</span>),color=<span class="hljs-string">&#x27;k&#x27;</span>,alpha=<span class="hljs-number">0.5</span>)<br>plt.subplots_adjust(wspace=<span class="hljs-number">0</span>,hspace=<span class="hljs-number">0</span>)<br><span class="hljs-comment">#控制宽度和高度的百分比</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 创建图表3 - 多系列图，分别绘画</span><br><br>df = pd.DataFrame(np.random.randn(<span class="hljs-number">100</span>,<span class="hljs-number">4</span>),index =ts.index,columns=<span class="hljs-built_in">list</span>(<span class="hljs-string">&#x27;ABCD&#x27;</span>))<br>df = df.cumsum()<br>df.plot(style = <span class="hljs-string">&#x27;--.&#x27;</span>,alpha = <span class="hljs-number">0.4</span>,grid = <span class="hljs-literal">True</span> ,figsize = (<span class="hljs-number">8</span>,<span class="hljs-number">8</span>),<br>       subplots=  <span class="hljs-literal">True</span>,<br>       layout = (<span class="hljs-number">2</span>,<span class="hljs-number">3</span>),<br>      sharex = <span class="hljs-literal">False</span>)<br>plt.subplots_adjust(wspace=<span class="hljs-number">0</span>,hspace=<span class="hljs-number">0.2</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="基本图表绘制"><a href="#基本图表绘制" class="headerlink" title="基本图表绘制"></a>基本图表绘制</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  Series  直接生成图表</span><br><br>ts = pd.Series(np.random.rand(<span class="hljs-number">20</span>),index = pd.date_range(<span class="hljs-string">&#x27;1/1/2021&#x27;</span>,periods=<span class="hljs-number">20</span>))<br>ts = ts.cumsum()<br>ts.plot(kind=<span class="hljs-string">&#x27;kde&#x27;</span>,      <span class="hljs-comment">#  line,bar,barth.....(折线图 ， 柱状图 ， 柱状图-横)</span><br>       label =<span class="hljs-string">&#x27;hehe&#x27;</span>,<br>       style =<span class="hljs-string">&#x27;--g.&#x27;</span>,<br>       alpha = <span class="hljs-number">0.4</span>,     <span class="hljs-comment">#透明度  0--1</span><br>        use_index = <span class="hljs-literal">True</span>,<br>       rot = <span class="hljs-number">45</span>,            <span class="hljs-comment">#旋转刻度标签</span><br>       grid = <span class="hljs-literal">True</span>,<br>       <span class="hljs-comment">#ylim = [-50,50],</span><br>       <span class="hljs-comment">#yticks = list(range(-50,50,10)),</span><br>       figsize = (<span class="hljs-number">8</span>,<span class="hljs-number">4</span>),<br>       title = <span class="hljs-string">&#x27;test&#x27;</span>,<br>       legend = <span class="hljs-literal">True</span>)    <span class="hljs-comment">#是否显示图例，一般直接用plt.legend(),也可以用    plt.plot()</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  DataFrame直接生成图表</span><br><br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">100</span>,<span class="hljs-number">4</span>),index=ts.index,columns=<span class="hljs-built_in">list</span>(<span class="hljs-string">&#x27;ABCD&#x27;</span>))<br>df = df.cumsum()<br>df.plot(kind=<span class="hljs-string">&#x27;line&#x27;</span>,<br>       style =<span class="hljs-string">&#x27;--&#x27;</span>,<br>       alpha = <span class="hljs-number">0.4</span>,<br>       use_index = <span class="hljs-literal">True</span>,<br>       rot = <span class="hljs-number">45</span>,<br>       grid = <span class="hljs-literal">True</span>,<br>       yticks = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(-<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">10</span>)),<br>       figsize = (<span class="hljs-number">12</span>,<span class="hljs-number">8</span>),<br>       title = <span class="hljs-string">&#x27;test&#x27;</span>,<br>       legend = <span class="hljs-literal">True</span>,   <br>       subplots = <span class="hljs-literal">True</span>,   <span class="hljs-comment">#####   这个会分开多个图表，而且颜色会越来越浅</span><br>       colormap = <span class="hljs-string">&#x27;Greens&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="柱状图、堆叠图"><a href="#柱状图、堆叠图" class="headerlink" title="柱状图、堆叠图"></a>柱状图、堆叠图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 柱状图、 堆叠图</span><br>fig,axes = plt.subplots(<span class="hljs-number">4</span>,<span class="hljs-number">1</span>,figsize = (<span class="hljs-number">10</span>,<span class="hljs-number">10</span>))<br>s = pd.Series(np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">16</span>),index = <span class="hljs-built_in">list</span>(<span class="hljs-string">&#x27;abcdefghijklmnop&#x27;</span>))<br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">10</span>,<span class="hljs-number">3</span>),columns=[<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>])<br><span class="hljs-comment">#print(s)</span><br><span class="hljs-comment">#print(df)</span><br><br><span class="hljs-comment">#单系列柱状图</span><br>s.plot(kind=<span class="hljs-string">&#x27;bar&#x27;</span>,ax=axes[<span class="hljs-number">0</span>])<br><br><span class="hljs-comment">#多系列柱状图</span><br>df.plot(kind=<span class="hljs-string">&#x27;bar&#x27;</span>,ax=axes[<span class="hljs-number">1</span>])<br><br><span class="hljs-comment">#多系列堆叠图</span><br>df.plot(kind=<span class="hljs-string">&#x27;bar&#x27;</span>,stacked=<span class="hljs-literal">True</span>,ax=axes[<span class="hljs-number">2</span>])<br><br>df.plot.barh(ax = axes[<span class="hljs-number">3</span>])<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python">plt.figure(figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">4</span>))<br>x = np.arange(<span class="hljs-number">10</span>)<br>y1 = np.random.rand(<span class="hljs-number">10</span>)<br>y2 = -np.random.rand(<span class="hljs-number">10</span>)<br><br>plt.bar(x,y1,width = <span class="hljs-number">1</span>,facecolor = <span class="hljs-string">&#x27;yellowgreen&#x27;</span>,edgecolor =<span class="hljs-string">&#x27;white&#x27;</span>,yerr = y1*<span class="hljs-number">0.1</span>)<br>plt.bar(x,y2,width = <span class="hljs-number">1</span>,facecolor = <span class="hljs-string">&#x27;lightskyblue&#x27;</span>,edgecolor =<span class="hljs-string">&#x27;white&#x27;</span>,yerr = y1*<span class="hljs-number">0.1</span>)<br><br><span class="hljs-comment">#  width  宽度比例</span><br><span class="hljs-comment">#xerrr/yerr   :  x/y方向的error</span><br><br> <br><span class="hljs-keyword">for</span> i,j <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(x,y1):<br>        plt.text(i+<span class="hljs-number">0.09</span>,j-<span class="hljs-number">0.4</span>,<span class="hljs-string">&#x27;%.2f&#x27;</span> %j, color = <span class="hljs-string">&#x27;white&#x27;</span>)<br><span class="hljs-keyword">for</span> i,j <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(x,y1):<br>        plt.text(i+<span class="hljs-number">0.1</span>,j+<span class="hljs-number">0.5</span>,<span class="hljs-string">&#x27;%.2f&#x27;</span> %-j, color = <span class="hljs-string">&#x27;white&#x27;</span>)<br>        <br><span class="hljs-comment">#给图添加text（）</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 外联图表plt.table()</span><br>data = [[<span class="hljs-number">5555</span>,<span class="hljs-number">23143</span>,<span class="hljs-number">44234</span>,<span class="hljs-number">3424</span>,<span class="hljs-number">44243</span>],<br>       [<span class="hljs-number">5555</span>,<span class="hljs-number">23143</span>,<span class="hljs-number">44234</span>,<span class="hljs-number">3424</span>,<span class="hljs-number">44243</span>],<br>       [<span class="hljs-number">5555</span>,<span class="hljs-number">23143</span>,<span class="hljs-number">44234</span>,<span class="hljs-number">3424</span>,<span class="hljs-number">44243</span>],<br>       [<span class="hljs-number">5555</span>,<span class="hljs-number">23143</span>,<span class="hljs-number">44234</span>,<span class="hljs-number">3424</span>,<span class="hljs-number">44243</span>],<br>       [<span class="hljs-number">5555</span>,<span class="hljs-number">23143</span>,<span class="hljs-number">44234</span>,<span class="hljs-number">3424</span>,<span class="hljs-number">44243</span>],]<br>columns = (<span class="hljs-string">&#x27;Freeze&#x27;</span>,<span class="hljs-string">&#x27;wind&#x27;</span>,<span class="hljs-string">&#x27;flood&#x27;</span>,<span class="hljs-string">&#x27;quake&#x27;</span>,<span class="hljs-string">&#x27;hail&#x27;</span>)<br>rows = [<span class="hljs-string">&#x27;%d year&#x27;</span> %x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> (<span class="hljs-number">100</span>,<span class="hljs-number">50</span>,<span class="hljs-number">20</span>,<span class="hljs-number">10</span>,<span class="hljs-number">5</span>)]<br>df = pd.DataFrame(data,columns= (<span class="hljs-string">&#x27;Freeze&#x27;</span>,<span class="hljs-string">&#x27;wind&#x27;</span>,<span class="hljs-string">&#x27;flood&#x27;</span>,<span class="hljs-string">&#x27;quake&#x27;</span>,<span class="hljs-string">&#x27;hail&#x27;</span>),<br>                 index =[<span class="hljs-string">&#x27;%d year&#x27;</span> % x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> (<span class="hljs-number">100</span>,<span class="hljs-number">50</span>,<span class="hljs-number">20</span>,<span class="hljs-number">10</span>,<span class="hljs-number">5</span>)])<br><span class="hljs-comment">#df</span><br><br>df.plot(kind =<span class="hljs-string">&#x27;bar&#x27;</span>,grid = <span class="hljs-literal">True</span>,colormap=<span class="hljs-string">&#x27;Blues_r&#x27;</span>,stacked = <span class="hljs-literal">True</span>,figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">3</span>))<br><span class="hljs-comment">#创建堆叠图</span><br><br>plt.table(cellText = data,          <span class="hljs-comment">#表格文本</span><br>         cellLoc = <span class="hljs-string">&#x27;center&#x27;</span>,          <span class="hljs-comment">#cell内的文本对齐位置</span><br>         cellColours = <span class="hljs-literal">None</span>,      <br>         rowLabels = rows,       <span class="hljs-comment">#行标签</span><br>         rowColours = plt.cm.BuPu(np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">0.5</span>,<span class="hljs-number">5</span>))[::<span class="hljs-number">1</span>],         <br>         colLabels = columns,                                            <span class="hljs-comment">#列标签</span><br>         colColours = plt.cm.BuPu(np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">0.5</span>,<span class="hljs-number">5</span>))[::<span class="hljs-number">1</span>],<br>         rowLoc = <span class="hljs-string">&#x27;right&#x27;</span>,     <span class="hljs-comment">#行标签对齐位置</span><br>         loc = <span class="hljs-string">&#x27;bottom&#x27;</span>)      <span class="hljs-comment">#表格位置</span><br><br>plt.xticks([])<br></code></pre></td></tr></table></figure>
+<h3 id="面积图、填图、饼图"><a href="#面积图、填图、饼图" class="headerlink" title="面积图、填图、饼图"></a>面积图、填图、饼图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  面积图</span><br>fig,axes = plt.subplots(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,figsize = (<span class="hljs-number">8</span>,<span class="hljs-number">6</span>))<br>df1 = pd.DataFrame(np.random.rand(<span class="hljs-number">10</span>,<span class="hljs-number">4</span>),columns=[<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>])<br>df2 = pd.DataFrame(np.random.rand(<span class="hljs-number">10</span>,<span class="hljs-number">4</span>),columns=[<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>])<br><br>df1.plot.area(colormap = <span class="hljs-string">&#x27;Greens_r&#x27;</span>,alpha = <span class="hljs-number">0.5</span>,ax = axes[<span class="hljs-number">0</span>])<br>df1.plot.area(stacked=<span class="hljs-literal">True</span>,colormap = <span class="hljs-string">&#x27;Set2&#x27;</span>,alpha = <span class="hljs-number">0.5</span>,ax = axes[<span class="hljs-number">1</span>])   <span class="hljs-comment">#stacked是否堆叠，默认是堆叠</span><br><span class="hljs-comment">#当数据出现NaN时，自动填充0，所以图标签需要清洗掉缺失值</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  填图</span><br><br>fig,axes = plt.subplots(<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">6</span>))<br><br>x = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">500</span>)<br>y1 = np.sin(<span class="hljs-number">4</span> * np.pi * x) * np.exp(-<span class="hljs-number">5</span>*x)<br>y2 = -np.sin(<span class="hljs-number">4</span> * np.pi * x) * np.exp(-<span class="hljs-number">5</span>*x)<br>axes[<span class="hljs-number">0</span>].fill(x,y1,<span class="hljs-string">&#x27;r&#x27;</span>,alpha=<span class="hljs-number">0.5</span>,label=<span class="hljs-string">&#x27;y1&#x27;</span>)<br>axes[<span class="hljs-number">0</span>].fill(x,y2,<span class="hljs-string">&#x27;g&#x27;</span>,alpha=<span class="hljs-number">0.5</span>,label=<span class="hljs-string">&#x27;y2&#x27;</span>)<br><span class="hljs-comment">#  对函数与坐标轴之间的区域进行填充用  fill函数</span><br><br>x = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">5</span>*np.pi,<span class="hljs-number">1000</span>)<br>y1 = np.sin(x)<br>y2 = np.sin(<span class="hljs-number">2</span>*x)<br>axes[<span class="hljs-number">1</span>].fill_between(x,y1,y2,color=<span class="hljs-string">&#x27;b&#x27;</span>,alpha=<span class="hljs-number">0.5</span>,label=<span class="hljs-string">&#x27;area&#x27;</span>)<br><span class="hljs-comment">#填充两个函数之间的区域，使用fill_between函数</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>):<br>    axes[i].legend()<br>    axes[i].grid()<br><span class="hljs-comment">#  添加图例，网格</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  饼图  plt.pie()</span><br>s = pd.Series(<span class="hljs-number">3</span> * np.random.rand(<span class="hljs-number">4</span>),index= [<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>],name=<span class="hljs-string">&#x27;series&#x27;</span>)<br>plt.axis(<span class="hljs-string">&#x27;equal&#x27;</span>)  <span class="hljs-comment">#保证长宽相等</span><br>plt.pie(s,<br>       explode = [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],    <span class="hljs-comment">#指定每部分的偏移量</span><br>       labels = s.index,<br>        colors = [<span class="hljs-string">&#x27;r&#x27;</span>,<span class="hljs-string">&#x27;g&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>],<br>       autopct = <span class="hljs-string">&#x27;%.2f%%&#x27;</span>,        <span class="hljs-comment">#饼图上的数据标签显示方式</span><br>        pctdistance = <span class="hljs-number">0.6</span>,      <br>        labeldistance = <span class="hljs-number">1.1</span>,     <span class="hljs-comment">#被画饼图标记的直径，默认为1.1    </span><br>        shadow = <span class="hljs-literal">True</span>,          <span class="hljs-comment">#  阴影</span><br>        startangle=<span class="hljs-number">10</span>,       <span class="hljs-comment">#开始角度</span><br>        radius = <span class="hljs-number">1.2</span>,      <span class="hljs-comment">#半径</span><br>        frame = <span class="hljs-literal">False</span>)    <span class="hljs-comment">#图框</span><br><span class="hljs-built_in">print</span>(s)<br></code></pre></td></tr></table></figure>
+<h3 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  直方图+ 密度图</span><br>s = pd.Series(np.random.randn(<span class="hljs-number">100</span>))<br>s.hist(bins = <span class="hljs-number">20</span>,         <span class="hljs-comment">#箱子的宽度</span><br>      histtype = <span class="hljs-string">&#x27;bar&#x27;</span>,     <span class="hljs-comment">#风格 ， bar barstacked  step  stepfilled</span><br>      align = <span class="hljs-string">&#x27;mid&#x27;</span>,     <br>      orientation = <span class="hljs-string">&#x27;vertical&#x27;</span>,    <span class="hljs-comment">#水平还是垂直(&#x27;horizontal&#x27;   &#x27;vertical&#x27;)</span><br>      alpha = <span class="hljs-number">0.5</span>)   <span class="hljs-comment"># normed = True</span><br><span class="hljs-comment">#align  对齐方式</span><br><br>s.plot(kind=<span class="hljs-string">&#x27;kde&#x27;</span>,style=<span class="hljs-string">&#x27;k--&#x27;</span>)<br>plt.grid()<br><span class="hljs-comment">#密度图</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  堆叠直方图</span><br>plt.figure(num=<span class="hljs-number">1</span>)<br>df = pd.DataFrame(&#123;<span class="hljs-string">&#x27;a&#x27;</span>:np.random.randn(<span class="hljs-number">1000</span>)+<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;b&#x27;</span>:np.random.randn(<span class="hljs-number">1000</span>),<br>                 <span class="hljs-string">&#x27;c&#x27;</span>:np.random.randn(<span class="hljs-number">1000</span>)-<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;d&#x27;</span>:np.random.randn(<span class="hljs-number">1000</span>)-<span class="hljs-number">2</span>&#125;,<br>                 columns=[<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>])<br>df.plot.hist(stacked=<span class="hljs-literal">True</span>,<br>            bins=<span class="hljs-number">20</span>,<br>            colormap=<span class="hljs-string">&#x27;Greens_r&#x27;</span>,<br>            alpha=<span class="hljs-number">0.5</span>,<br>            grid = <span class="hljs-literal">True</span>)<br><span class="hljs-comment">#stacked  是否堆叠</span><br><br>df.hist(bins=<span class="hljs-number">50</span>)<br><span class="hljs-comment">#生成多个直方图</span><br></code></pre></td></tr></table></figure>
+<h3 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  plt.scatter()  散点图</span><br>plt.figure(figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">6</span>),)<br>x = np.random.randn(<span class="hljs-number">1000</span>)<br>y = np.random.randn(<span class="hljs-number">1000</span>)<br>plt.scatter(x,y,marker=<span class="hljs-string">&#x27;.&#x27;</span>,<br>           s = np.random.randn(<span class="hljs-number">1000</span>)*<span class="hljs-number">100</span>,<br>           cmap = <span class="hljs-string">&#x27;Blues_r&#x27;</span>,<br>           c = y,<br>           alpha = <span class="hljs-number">0.8</span>)<br>plt.grid()<br><br><span class="hljs-comment">#  s 散点图的大小</span><br><span class="hljs-comment">#  c 散点图的颜色</span><br><span class="hljs-comment">#  vmin ，vmax   亮度设置，标量</span><br><span class="hljs-comment">#cmap  colormap</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  pd.scatter_matrix(散点矩阵)</span><br><br><br>df = pd.DataFrame(np.random.randn(<span class="hljs-number">100</span>,<span class="hljs-number">4</span>),columns=[<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>])<br>pd.scatter_matrix(&#123;df,figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">6</span>),<br>                 marker=<span class="hljs-string">&#x27;o&#x27;</span>,<br>                 diagonal = <span class="hljs-string">&#x27;kde&#x27;</span>,<br>                 alpha = <span class="hljs-number">0.5</span>,<br>                 range_padding=<span class="hljs-number">0.1</span>&#125;)<br><span class="hljs-comment"># diagonal:(&#123;hist   kde&#125;)  只能其中选一个  确定频率</span><br><span class="hljs-comment">#   图像在x轴 ，y轴远点附近的留白，该值越大，图像离坐标远点越远</span><br></code></pre></td></tr></table></figure>
+<h3 id="极坐标（雷达图）"><a href="#极坐标（雷达图）" class="headerlink" title="极坐标（雷达图）"></a>极坐标（雷达图）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 创建极坐标图</span><br>s = pd.Series(np.arange(<span class="hljs-number">20</span>))<br>theta = np.arange(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>*np.pi,<span class="hljs-number">0.02</span>)<br><span class="hljs-built_in">print</span>(s.head())<br><span class="hljs-built_in">print</span>(theta[:<span class="hljs-number">10</span>])<br><span class="hljs-comment">#  创建数据</span><br><br>fig = plt.figure(figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">4</span>))<br>ax1 = plt.subplot(<span class="hljs-number">121</span>,projection = <span class="hljs-string">&#x27;polar&#x27;</span>)<br>ax2 = plt.subplot(<span class="hljs-number">122</span>)<br><span class="hljs-comment">#   创建极坐标图</span><br><span class="hljs-comment">#  还可以写  ax = fig.add_subplot(111,polar=True)</span><br><br>ax1.plot(theta,theta*<span class="hljs-number">3</span>,linestyle = <span class="hljs-string">&#x27;--&#x27;</span>,lw=<span class="hljs-number">1</span>)     <span class="hljs-comment">#theta: x   theta*3 : y</span><br>ax1.plot(s,linestyle = <span class="hljs-string">&#x27;--&#x27;</span>,marker=<span class="hljs-string">&#x27;.&#x27;</span>,lw=<span class="hljs-number">2</span>)<br>ax2.plot(theta,theta*<span class="hljs-number">3</span>,linestyle = <span class="hljs-string">&#x27;--&#x27;</span>,lw=<span class="hljs-number">1</span>)<br>ax2.plot(s)<br>plt.grid()<br><span class="hljs-comment">#  创建极坐标图，参数1为角度  ，参数2为value</span><br><span class="hljs-comment">#  lw  线宽</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 参数</span><br>ax2.set_theta_direction(-<span class="hljs-number">1</span>)   <span class="hljs-comment">#坐标轴正方向，默认为逆方向</span><br>ax2.set_thetagrids(np.arange(<span class="hljs-number">0.0</span>,<span class="hljs-number">360</span>,<span class="hljs-number">90</span>))    <span class="hljs-comment">#设置极坐标角度网格线显示</span><br>ax2.set_rgrids(np.arange(<span class="hljs-number">0.2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0.4</span>))    <span class="hljs-comment">#  设置极径网格线显示，其中参数必须为正数</span><br><br>ax2.set_theta_offset(np.pi/<span class="hljs-number">2</span>)   <span class="hljs-comment">#设置角度【偏移】，逆时针，弧度制</span><br><br>ax2.set_rlim(<span class="hljs-number">0.2</span>,<span class="hljs-number">1.2</span>)   <span class="hljs-comment"># 显示的极径范围</span><br>ax2.set_rmax(<span class="hljs-number">2</span>)      <span class="hljs-comment">#设置显示的极径最大值</span><br>ax2.set_rticks(np.arange(<span class="hljs-number">0.1</span>,<span class="hljs-number">1.5</span>,<span class="hljs-number">0.2</span>))   <span class="hljs-comment">#  设置极径网格线的显示范围</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  雷达图1 - 极坐标的折线图、填图 - plt.plot()</span><br><br>plt.figure(figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">4</span>))<br><br>ax1 = plt.subplot(<span class="hljs-number">111</span>,projection = <span class="hljs-string">&#x27;polar&#x27;</span>)<br>ax1.set_title(<span class="hljs-string">&#x27;radar map\n&#x27;</span>)  <span class="hljs-comment">#创建标题</span><br>ax1.set_rlim(<span class="hljs-number">0</span>,<span class="hljs-number">12</span>)<br><br>data1 = np.random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>)<br>data2 = np.random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>)<br>data3 = np.random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>)<br>theta = np.arange(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>*np.pi,<span class="hljs-number">2</span>*np.pi/<span class="hljs-number">10</span>)<br><span class="hljs-comment">#  创建数据</span><br><br>ax1.plot(theta,data1,<span class="hljs-string">&#x27;.--&#x27;</span>,label=<span class="hljs-string">&#x27;data1&#x27;</span>)<br>ax1.fill(theta,data1,alpha=<span class="hljs-number">0.2</span>)<br>ax2.plot(theta,data2,<span class="hljs-string">&#x27;.--&#x27;</span>,label=<span class="hljs-string">&#x27;data2&#x27;</span>)<br>ax1.fill(theta,data2,alpha=<span class="hljs-number">0.2</span>)<br>ax1.plot(theta,data3,<span class="hljs-string">&#x27;.--&#x27;</span>,label=<span class="hljs-string">&#x27;data3&#x27;</span>)<br>ax1.fill(theta,data3,alpha=<span class="hljs-number">0.2</span>)<br><span class="hljs-comment"># 绘制雷达线</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  雷达图2 - 极坐标的折线图、填图 - plt.polar()</span><br><span class="hljs-comment"># 收尾闭合</span><br><br>labels = np.array([<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>,<span class="hljs-string">&#x27;e&#x27;</span>,<span class="hljs-string">&#x27;f&#x27;</span>])<br>dataLenth = <span class="hljs-number">6</span>  <span class="hljs-comment">#数据长度</span><br>data1 = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">6</span>)<br>data2 = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">6</span>)<span class="hljs-comment">#   数据</span><br><br>angles = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>*np.pi,dataLenth,endpoint=<span class="hljs-literal">False</span>)  <span class="hljs-comment">#分割圆周长</span><br>data1 = np.concatenate((data1,[data1[<span class="hljs-number">0</span>]]))  <span class="hljs-comment">#闭合</span><br>data2 = np.concatenate((data2,[data2[<span class="hljs-number">0</span>]]))  <span class="hljs-comment">#闭合</span><br>angles = np.concatenate((angles,[angles[<span class="hljs-number">0</span>]]))  <span class="hljs-comment">#闭合</span><br><br>plt.polar(angles,data1,<span class="hljs-string">&#x27;o-&#x27;</span>,linewidth=<span class="hljs-number">1</span>)   <span class="hljs-comment">#做极坐标系</span><br>plt.fill(angles,data1,alpha = <span class="hljs-number">0.25</span>)  <span class="hljs-comment">#填充</span><br>plt.polar(angles,data2,<span class="hljs-string">&#x27;o-&#x27;</span>,linewidth=<span class="hljs-number">1</span>)   <span class="hljs-comment">#做极坐标系</span><br>plt.fill(angles,data2,alpha = <span class="hljs-number">0.25</span>)  <span class="hljs-comment">#填充</span><br><br>plt.thetagrids(angles*<span class="hljs-number">150</span>/np.pi,labels)   <span class="hljs-comment">#设置网格 标签</span><br>plt.ylim(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>) <span class="hljs-comment"># polar的极值设置为ylim</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs pythom">plt.figure(figsize=(8,4))<br><br>ax1 = plt.subplot(111,projection=&#x27;polar&#x27;)<br>ax1.set_rlim(0,12)   <br><br>#data = np.random.randint(1,10,10)<br>#theta = np.arange(0.2*np.pi,2*np.pi/10)<br>#bar = ax1.bar(theta,data,alpha=0.5)  #创建数据<br><br>#for r,bar in zip(data,bar):<br>#    bar.set_facecolor(plt,cm.jet(r/10))   #设置颜色<br></code></pre></td></tr></table></figure>
+<h3 id="箱型图"><a href="#箱型图" class="headerlink" title="箱型图"></a>箱型图</h3><h6 id="1、-上四分位数-将序列分为四份，一般使用（n-1）-4"><a href="#1、-上四分位数-将序列分为四份，一般使用（n-1）-4" class="headerlink" title="1、 上四分位数   - - 将序列分为四份，一般使用（n+1）/4"></a>1、 上四分位数   - - 将序列分为四份，一般使用（n+1）/4</h6><h6 id="2、-下四分位数-将序列分为四份，一般使用（n-1）-4-3-6-75"><a href="#2、-下四分位数-将序列分为四份，一般使用（n-1）-4-3-6-75" class="headerlink" title="2、 下四分位数  - - 将序列分为四份，一般使用（n+1）/4*3=6.75"></a>2、 下四分位数  - - 将序列分为四份，一般使用（n+1）/4*3=6.75</h6><h6 id="3、-内限-T形的盒须就是内限，最大值区间Q3-1-5IQR，最小区间是Q1-1-5IQR-IQR-Q3-Q1"><a href="#3、-内限-T形的盒须就是内限，最大值区间Q3-1-5IQR，最小区间是Q1-1-5IQR-IQR-Q3-Q1" class="headerlink" title="3、 内限 - -T形的盒须就是内限，最大值区间Q3+1.5IQR，最小区间是Q1-1.5IQR  (IQR = Q3-Q1)"></a>3、 内限 - -T形的盒须就是内限，最大值区间Q3+1.5IQR，最小区间是Q1-1.5IQR  (IQR = Q3-Q1)</h6><h6 id="4、-外限-T形的盒须就是内限，最大值区间Q3-3IQR，最小区间是Q1-3IQR"><a href="#4、-外限-T形的盒须就是内限，最大值区间Q3-3IQR，最小区间是Q1-3IQR" class="headerlink" title="4、 外限 - -T形的盒须就是内限，最大值区间Q3+3IQR，最小区间是Q1-3IQR"></a>4、 外限 - -T形的盒须就是内限，最大值区间Q3+3IQR，最小区间是Q1-3IQR</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  plt.plot.box()  绘制</span><br><br>fig,axes = plt.subplots(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">6</span>))<br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">10</span>,<span class="hljs-number">5</span>),columns=[<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>,<span class="hljs-string">&#x27;C&#x27;</span>,<span class="hljs-string">&#x27;D&#x27;</span>,<span class="hljs-string">&#x27;E&#x27;</span>])<br>color = <span class="hljs-built_in">dict</span>(boxes = <span class="hljs-string">&#x27;DarkGreen&#x27;</span>,whiskers=<span class="hljs-string">&#x27;DarkOrange&#x27;</span>,medians=<span class="hljs-string">&#x27;DarkBlue&#x27;</span>,caps=<span class="hljs-string">&#x27;Gray&#x27;</span>)<br><span class="hljs-comment"># boxs 箱线</span><br><span class="hljs-comment">#  whiskers:  分位数与error bar横线之间竖线的颜色</span><br><span class="hljs-comment">#mediians  :  中位数线颜色</span><br><span class="hljs-comment">#  caps：   error bar横线颜色</span><br><br>df.plot.box(ylim=[<span class="hljs-number">0</span>,<span class="hljs-number">1.2</span>],<br>           grid = <span class="hljs-literal">True</span>,<br>           color= color,<br>           ax = axes[<span class="hljs-number">0</span>])<br><span class="hljs-comment">#  color: 样式填充</span><br><br>df.plot.box(vert = <span class="hljs-literal">False</span>,<br>           positions=[<span class="hljs-number">1</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">8</span>],<br>           ax = axes[<span class="hljs-number">1</span>],<br>           grid = <span class="hljs-literal">True</span>,<br>           color = color)<br><span class="hljs-comment">#  vert:  是否垂直，默认为True</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">df = pd.DataFrame(np.random.rand(<span class="hljs-number">10</span>,<span class="hljs-number">5</span>),columns=[<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>,<span class="hljs-string">&#x27;C&#x27;</span>,<span class="hljs-string">&#x27;D&#x27;</span>,<span class="hljs-string">&#x27;E&#x27;</span>])<br>plt.figure(figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">4</span>))<br><span class="hljs-comment">#  创建图表数据</span><br><br>f = df.boxplot(sym = <span class="hljs-string">&#x27;o&#x27;</span>,   <span class="hljs-comment"># 异常点形状，参考marker</span><br>              vert = <span class="hljs-literal">True</span>,  <br>              whis=<span class="hljs-number">1.5</span>,         <span class="hljs-comment">#IQR</span><br>              patch_artist = <span class="hljs-literal">True</span>,     <span class="hljs-comment"># 上下四分位框内是否填充</span><br>              meanline = <span class="hljs-literal">False</span>,showmeans=<span class="hljs-literal">True</span>,    <span class="hljs-comment">#是否有均值线及其形状</span><br>              showbox = <span class="hljs-literal">True</span>,     <span class="hljs-comment"># 是否显示箱线</span><br>              showcaps = <span class="hljs-literal">True</span>,    <span class="hljs-comment"># 是否显示边缘线</span><br>              showfliers = <span class="hljs-literal">True</span>,   <span class="hljs-comment"># 是否显示异常值</span><br>              notch = <span class="hljs-literal">False</span>,     <span class="hljs-comment">#  中间箱体是否有缺口</span><br>              return_type = <span class="hljs-string">&#x27;dict&#x27;</span>)    <span class="hljs-comment"># 返回类型为字典</span><br>plt.title(<span class="hljs-string">&#x27;boxplot&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  plt.boxplot()绘制</span><br><span class="hljs-comment">#  分组汇总</span><br><br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">10</span>,<span class="hljs-number">2</span>),columns = [<span class="hljs-string">&#x27;col1&#x27;</span>,<span class="hljs-string">&#x27;col2&#x27;</span>])<br>df[<span class="hljs-string">&#x27;X&#x27;</span>] = pd.Series([<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>])<br>df[<span class="hljs-string">&#x27;Y&#x27;</span>] = pd.Series([<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>])<br><span class="hljs-comment">#print(df.head())</span><br>df.boxplot(by = <span class="hljs-string">&#x27;X&#x27;</span>)    <span class="hljs-comment">#  汇总</span><br>df.boxplot(column=[<span class="hljs-string">&#x27;col1&#x27;</span>,<span class="hljs-string">&#x27;col2&#x27;</span>],by = [<span class="hljs-string">&#x27;X&#x27;</span>,<span class="hljs-string">&#x27;Y&#x27;</span>])<br><br><br><span class="hljs-comment">#  column:  按照数据的列分子图</span><br><span class="hljs-comment">#  by ； 按照列分组做的箱型图</span><br></code></pre></td></tr></table></figure>
+<h3 id="样式表格创建"><a href="#样式表格创建" class="headerlink" title="样式表格创建"></a>样式表格创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  样式</span><br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">10</span>,<span class="hljs-number">4</span>),columns = [<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>])<br>df<br><span class="hljs-comment">#sty = df.style</span><br><span class="hljs-comment">#print(sty,type(sty))</span><br>sty<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  按元素处理样式：  style.applymap() ----自动调用其中的函数</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">color_neg_red</span>(<span class="hljs-params">val</span>):</span><br>    <span class="hljs-keyword">if</span> val&lt;<span class="hljs-number">0</span>:<br>        color=<span class="hljs-string">&#x27;red&#x27;</span><br>    <span class="hljs-keyword">else</span>:<br>        color=<span class="hljs-string">&#x27;black&#x27;</span><br>    <span class="hljs-keyword">return</span>(<span class="hljs-string">&#x27;color:%s&#x27;</span>% color)<br>df.style.applymap(color_neg_red) <br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  按行/列 处理样式：  style.apply()</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">highlight_max</span>(<span class="hljs-params">s</span>):</span><br>    is_max = s == s.<span class="hljs-built_in">max</span>()<br>    <br>    lst = []<br>    <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> is_max:<br>        <span class="hljs-keyword">if</span> v:<br>            lst.append(<span class="hljs-string">&#x27;background-color:yellow&#x27;</span>)<br>        <span class="hljs-keyword">else</span>:<br>            lst.append(<span class="hljs-string">&#x27;&#x27;</span>)<br>    <span class="hljs-keyword">return</span>(lst)<br>df.style.apply(highlight_max,axis = <span class="hljs-number">0</span>,subset = [<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>])<br><br><span class="hljs-comment"># 创建样式方法，每列最大值填充黄色</span><br><span class="hljs-comment"># axis:  0为列，  1为行 ，默认为0</span><br><span class="hljs-comment">#  subset:  索引</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  样式索引、切片</span><br><br>df.style.apply(highlight_max,axis = <span class="hljs-number">1</span>,<br>              subset = pd.IndexSlice[<span class="hljs-number">2</span>:<span class="hljs-number">5</span>,[<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>]])  <br></code></pre></td></tr></table></figure>
+<h3 id="表格显示控制"><a href="#表格显示控制" class="headerlink" title="表格显示控制"></a>表格显示控制</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 按照百分数显示</span><br><br>df = pd.DataFrame(np.random.randn(<span class="hljs-number">10</span>,<span class="hljs-number">4</span>),columns=[<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-string">&#x27;d&#x27;</span>])<br><span class="hljs-built_in">print</span>(df)<br>df.head().style.<span class="hljs-built_in">format</span>(<span class="hljs-string">&quot;&#123;:.2%&#125;&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#   显示小数点数</span><br><br>df.head().style.<span class="hljs-built_in">format</span>(<span class="hljs-string">&quot;&#123;:.4%&#125;&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#   显示正负数</span><br><br>df.head().style.<span class="hljs-built_in">format</span>(<span class="hljs-string">&quot;&#123;:+.2f&#125;&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 分列显示</span><br><br>df.head().style.<span class="hljs-built_in">format</span>(&#123;<span class="hljs-string">&#x27;b&#x27;</span>:<span class="hljs-string">&quot;&#123;:.2%&#125;&quot;</span>,<span class="hljs-string">&#x27;c&#x27;</span>:<span class="hljs-string">&quot;&#123;:+.3f&#125;&quot;</span>,<span class="hljs-string">&#x27;d&#x27;</span>:<span class="hljs-string">&quot;&#123;:.3f&#125;&quot;</span>&#125;)<br></code></pre></td></tr></table></figure>
+<h3 id="表格样式调用"><a href="#表格样式调用" class="headerlink" title="表格样式调用"></a>表格样式调用</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  定位空值</span><br><br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">5</span>,<span class="hljs-number">4</span>),columns=<span class="hljs-built_in">list</span>(<span class="hljs-string">&#x27;ABCD&#x27;</span>))<br>df[<span class="hljs-string">&#x27;A&#x27;</span>][<span class="hljs-number">2</span>] = np.nan<br>df.style.highlight_null(null_color = <span class="hljs-string">&#x27;red&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  色彩映射</span><br><br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">10</span>,<span class="hljs-number">4</span>),columns=<span class="hljs-built_in">list</span>(<span class="hljs-string">&#x27;ABCD&#x27;</span>))<br>df.style.background_gradient(cmap=<span class="hljs-string">&#x27;Greens&#x27;</span>,axis = <span class="hljs-number">1</span>,low = <span class="hljs-number">0</span>,high = <span class="hljs-number">1</span>)<br><span class="hljs-comment">#  camp 颜色</span><br><span class="hljs-comment">#  axis:  映射参考，0为行，1为列</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  条形图</span><br><br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">10</span>,<span class="hljs-number">4</span>),columns=<span class="hljs-built_in">list</span>(<span class="hljs-string">&#x27;ABCD&#x27;</span>))<br>df.style.bar(subset=[<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>],color=<span class="hljs-string">&#x27;#d65f5f&#x27;</span>,width=<span class="hljs-number">100</span>)<br><span class="hljs-comment"># width 最长长度在格子的占比</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  分段式构建样式</span><br>df = pd.DataFrame(np.random.rand(<span class="hljs-number">10</span>,<span class="hljs-number">4</span>),columns=<span class="hljs-built_in">list</span>(<span class="hljs-string">&#x27;ABCD&#x27;</span>))<br>df[<span class="hljs-string">&#x27;A&#x27;</span>][[<span class="hljs-number">3</span>,<span class="hljs-number">2</span>]] =np.nan<br>df.style.\<br>       bar(subset=[<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;B&#x27;</span>],color = <span class="hljs-string">&#x27;#d65f5f&#x27;</span>,width=<span class="hljs-number">100</span>).\<br>       highlight_null(null_color=<span class="hljs-string">&#x27;yellow&#x27;</span>)<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/python-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">python+机器学习+数据分析</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python%E5%B7%A5%E5%85%B7/">python工具</a>
+                    
+                  </div>
+                
+              </div>
+              <!-- 
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+               -->
+
+              
+                <p class="note note-warning">
+                <strong>本文作者: </strong><a href="/">水寿先生</a> <br>
+                <strong>本文链接: </strong><a href="http://chen320.github.io/2022/07/15/python%E9%87%8D%E7%82%B9%E5%B7%A5%E5%85%B7%E6%8E%8C%E6%8F%A1/">http://chen320.github.io/2022/07/15/python%E9%87%8D%E7%82%B9%E5%B7%A5%E5%85%B7%E6%8E%8C%E6%8F%A1/</a> <br>
+                <strong>版权声明: </strong>本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                </p>
+              
+
+
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/15/python%E9%87%8D%E7%82%B9%E5%B7%A5%E5%85%B7%E6%8E%8C%E6%8F%A1%EF%BC%88numpy%EF%BC%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">python-重点工具(Numpy)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/15/python%E9%87%8D%E7%82%B9%E5%B7%A5%E5%85%B7%E6%8E%8C%E6%8F%A1%EF%BC%88pandas%EF%BC%89/">
+                        <span class="hidden-mobile">python-重点工具(Pandas计算)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"7GgfPxgdU2CcwlhdqMFDascs-gzGzoHsz","appKey":"iQjxbFjeMOGRmMhYhY2jA9sp","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/liangbian.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/xiantiao.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/dianji.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js"></script>
+<script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
