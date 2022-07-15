@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/null">
+  <link rel="icon" href="https://ts1.cn.mm.bing.net/th/id/R-C.f408176d301eba722a97bcc4d045cbc7?rik=J%2bK47GXYGgKyOw&amp;riu=http%3a%2f%2fstatic.oschina.net%2fuploads%2fspace%2f2015%2f0629%2f165329_EdoG_1767531.png&amp;ehk=ZIVbH06spduNSMSM0N3kkzz8ylv0o4zwwb%2fySRRRV00%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Chentao">
+  <meta name="keywords" content="">
+  <meta name="description" content="# KNN的原理就是当预测一个新的值x的时候，根据它距离最近的K个点是什么类别来判断x属于哪个类别。#  对重要的两点就是  K值的选取和点距离的计算——————————————————————————距离d的计算和K的取值#  如何确定K取多少值好呢？#  通过交叉验证（将样本数据按照一定比例，拆分出训练用的数据和验证用的数据，比如6：4拆分出部分训练数据和验证数据）#  从选取一个较小的K值开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据分析算法-KNN算法例子">
+<meta property="og:url" content="http://chen320.github.io/2022/07/15/KNN%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Chen&#39;s Blog">
+<meta property="og:description" content="# KNN的原理就是当预测一个新的值x的时候，根据它距离最近的K个点是什么类别来判断x属于哪个类别。#  对重要的两点就是  K值的选取和点距离的计算——————————————————————————距离d的计算和K的取值#  如何确定K取多少值好呢？#  通过交叉验证（将样本数据按照一定比例，拆分出训练用的数据和验证用的数据，比如6：4拆分出部分训练数据和验证数据）#  从选取一个较小的K值开">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-15T01:05:04.850Z">
+<meta property="article:author" content="Chentao">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>数据分析算法-KNN算法例子 - Chen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/gundong.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/dazi.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chen320.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"7GgfPxgdU2CcwlhdqMFDascs-gzGzoHsz","app_key":"iQjxbFjeMOGRmMhYhY2jA9sp","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>水寿先生</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                个人
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.pixabay.com/photo/2021/12/27/21/37/church-6898286_960_720.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数据分析算法-KNN算法例子">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-15 00:00" pubdate>
+        July 15, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.9k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        阅读量:<span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据分析算法-KNN算法例子</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：July 15, 2022 am
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h5 id="KNN的原理就是当预测一个新的值x的时候，根据它距离最近的K个点是什么类别来判断x属于哪个类别。"><a href="#KNN的原理就是当预测一个新的值x的时候，根据它距离最近的K个点是什么类别来判断x属于哪个类别。" class="headerlink" title="# KNN的原理就是当预测一个新的值x的时候，根据它距离最近的K个点是什么类别来判断x属于哪个类别。"></a># KNN的原理就是当预测一个新的值x的时候，根据它距离最近的K个点是什么类别来判断x属于哪个类别。</h5><h5 id="对重要的两点就是-K值的选取和点距离的计算"><a href="#对重要的两点就是-K值的选取和点距离的计算" class="headerlink" title="#  对重要的两点就是  K值的选取和点距离的计算"></a>#  对重要的两点就是  K值的选取和点距离的计算</h5><h5 id="——————————————————————————"><a href="#——————————————————————————" class="headerlink" title="——————————————————————————"></a>——————————————————————————</h5><h3 id="距离d的计算和K的取值"><a href="#距离d的计算和K的取值" class="headerlink" title="距离d的计算和K的取值"></a>距离d的计算和K的取值</h3><h5 id="如何确定K取多少值好呢？"><a href="#如何确定K取多少值好呢？" class="headerlink" title="#  如何确定K取多少值好呢？"></a>#  如何确定K取多少值好呢？</h5><h5 id="通过交叉验证（将样本数据按照一定比例，拆分出训练用的数据和验证用的数据，比如6：4拆分出部分训练数据和验证数据）"><a href="#通过交叉验证（将样本数据按照一定比例，拆分出训练用的数据和验证用的数据，比如6：4拆分出部分训练数据和验证数据）" class="headerlink" title="#  通过交叉验证（将样本数据按照一定比例，拆分出训练用的数据和验证用的数据，比如6：4拆分出部分训练数据和验证数据）"></a>#  通过交叉验证（将样本数据按照一定比例，拆分出训练用的数据和验证用的数据，比如6：4拆分出部分训练数据和验证数据）</h5><h5 id="从选取一个较小的K值开始，不断增加K的值，然后计算验证集合的方差，最终找到一个比较合适的K值。"><a href="#从选取一个较小的K值开始，不断增加K的值，然后计算验证集合的方差，最终找到一个比较合适的K值。" class="headerlink" title="#  从选取一个较小的K值开始，不断增加K的值，然后计算验证集合的方差，最终找到一个比较合适的K值。"></a>#  从选取一个较小的K值开始，不断增加K的值，然后计算验证集合的方差，最终找到一个比较合适的K值。</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_iris<br><span class="hljs-keyword">from</span> sklearn.model_selection  <span class="hljs-keyword">import</span> cross_val_score<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> sklearn.neighbors <span class="hljs-keyword">import</span> KNeighborsClassifier<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  KNN算法基本参数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">KNeighborsClassifier</span>(<span class="hljs-params">n_neighbors = <span class="hljs-number">5</span>,</span></span><br><span class="hljs-params"><span class="hljs-function">                       weights=<span class="hljs-string">&#x27;uniform&#x27;</span>,</span></span><br><span class="hljs-params"><span class="hljs-function">                       algorithm = <span class="hljs-string">&#x27;&#x27;</span>,</span></span><br><span class="hljs-params"><span class="hljs-function">                       leaf_size = <span class="hljs-string">&#x27;30&#x27;</span>,</span></span><br><span class="hljs-params"><span class="hljs-function">                       p = <span class="hljs-number">2</span>,</span></span><br><span class="hljs-params"><span class="hljs-function">                       metric = <span class="hljs-string">&#x27;minkowski&#x27;</span>,</span></span><br><span class="hljs-params"><span class="hljs-function">                       metric_params = <span class="hljs-literal">None</span>,</span></span><br><span class="hljs-params"><span class="hljs-function">                       n_jobs = <span class="hljs-literal">None</span></span>)</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  使用交叉验证方法选出最优的K值</span><br><span class="hljs-comment">#读取鸢尾花数据集</span><br>iris = load_iris()<br>x = iris.data<br>y = iris.target<br>k_range = <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">31</span>)<br>k_error = []<br><span class="hljs-comment">#循环，取k=1到k=31，查看误差效果</span><br><span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> k_range:<br>    knn = KNeighborsClassifier(n_neighbors=k)<br>    <span class="hljs-comment">#cv参数决定数据集划分比例，这里是按照5:1划分训练集和测试集</span><br>    scores = cross_val_score(knn, x, y, cv=<span class="hljs-number">6</span>, scoring=<span class="hljs-string">&#x27;accuracy&#x27;</span>)<br>    k_error.append(<span class="hljs-number">1</span> - scores.mean())<br><span class="hljs-comment">#画图，x轴为k值，y值为误差值</span><br>plt.plot(k_range, k_error)<br>plt.xlabel(<span class="hljs-string">&#x27;Value of K for KNN&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;Error&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+<h5 id="明显在K-11的时候误差最小"><a href="#明显在K-11的时候误差最小" class="headerlink" title="#  明显在K=11的时候误差最小"></a>#  明显在K=11的时候误差最小</h5><h5 id="在实际问题当中，如果数据集比较大，为了较少训练时间，k的取值范围可以缩小"><a href="#在实际问题当中，如果数据集比较大，为了较少训练时间，k的取值范围可以缩小" class="headerlink" title="#  在实际问题当中，如果数据集比较大，为了较少训练时间，k的取值范围可以缩小"></a>#  在实际问题当中，如果数据集比较大，为了较少训练时间，k的取值范围可以缩小</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  有了 K 值我们就能运行 KNN 算法了</span><br><br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> matplotlib.colors <span class="hljs-keyword">import</span> ListedColormap<br><span class="hljs-keyword">from</span> sklearn <span class="hljs-keyword">import</span> neighbors, datasets<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br>n_neighbors = <span class="hljs-number">11</span><br> <br> <span class="hljs-comment"># 导入一些要玩的数据</span><br>iris = datasets.load_iris()<br>x = iris.data[:, :<span class="hljs-number">2</span>]  <span class="hljs-comment"># 我们只采用前两个feature,方便画图在二维平面显示</span><br>y = iris.target<br> <br>h = <span class="hljs-number">.02</span>  <span class="hljs-comment"># 网格中的步长</span><br> <br> <span class="hljs-comment"># 创建彩色的图</span><br>cmap_light = ListedColormap([<span class="hljs-string">&#x27;#FFAAAA&#x27;</span>, <span class="hljs-string">&#x27;#AAFFAA&#x27;</span>, <span class="hljs-string">&#x27;#AAAAFF&#x27;</span>])<br>cmap_bold = ListedColormap([<span class="hljs-string">&#x27;#FF0000&#x27;</span>, <span class="hljs-string">&#x27;#00FF00&#x27;</span>, <span class="hljs-string">&#x27;#0000FF&#x27;</span>])<br> <br><span class="hljs-comment">#weights是KNN模型中的一个参数，上述参数介绍中有介绍，这里绘制两种权重参数下KNN的效果图</span><br><span class="hljs-keyword">for</span> weights <span class="hljs-keyword">in</span> [<span class="hljs-string">&#x27;uniform&#x27;</span>, <span class="hljs-string">&#x27;distance&#x27;</span>]:<br>    <span class="hljs-comment"># 创建了一个knn分类器的实例，并拟合数据</span><br>    clf = neighbors.KNeighborsClassifier(n_neighbors, weights=weights)<br>    clf.fit(x, y)<br> <br>    <span class="hljs-comment"># 绘制决策边界，为此，我们将为每个分配一个颜色</span><br>    <span class="hljs-comment"># 来绘制网格中的点 [x_min, x_max]x[y_min, y_max].</span><br>    x_min, x_max = x[:, <span class="hljs-number">0</span>].<span class="hljs-built_in">min</span>() - <span class="hljs-number">1</span>, x[:, <span class="hljs-number">0</span>].<span class="hljs-built_in">max</span>() + <span class="hljs-number">1</span><br>    y_min, y_max = x[:, <span class="hljs-number">1</span>].<span class="hljs-built_in">min</span>() - <span class="hljs-number">1</span>, x[:, <span class="hljs-number">1</span>].<span class="hljs-built_in">max</span>() + <span class="hljs-number">1</span><br>    xx, yy = np.meshgrid(np.arange(x_min, x_max, h),<br>                         np.arange(y_min, y_max, h))<br>    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])<br> <br>    <span class="hljs-comment"># 将结果放入一个彩色图中</span><br>    Z = Z.reshape(xx.shape)<br>    plt.figure()<br>    plt.pcolormesh(xx, yy, Z, cmap=cmap_light)<br> <br>    <span class="hljs-comment"># 绘制训练点</span><br>    plt.scatter(x[:, <span class="hljs-number">0</span>], x[:, <span class="hljs-number">1</span>], c=y, cmap=cmap_bold)<br>    plt.xlim(xx.<span class="hljs-built_in">min</span>(), xx.<span class="hljs-built_in">max</span>())<br>    plt.ylim(yy.<span class="hljs-built_in">min</span>(), yy.<span class="hljs-built_in">max</span>())<br>    plt.title(<span class="hljs-string">&quot;3-Class classification (k = %i, weights = &#x27;%s&#x27;)&quot;</span> % (n_neighbors, weights))<br>    plt.show()<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_iris<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#从sklearn中导入iris数据集</span><br><br>iris = load_iris()<br>X = iris.data<br>y = iris.target<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#计算data1和data2的欧几里得距离。</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">euclideanDistance</span>(<span class="hljs-params">data1, data2</span>):</span><br>    distance = <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.neighbors <span class="hljs-keyword">import</span> NearestNeighbors<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br>X = np.array([[-<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>], [-<span class="hljs-number">2</span>, -<span class="hljs-number">1</span>], [-<span class="hljs-number">3</span>, -<span class="hljs-number">2</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">2</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">2</span>]])<br>nbrs = NearestNeighbors(n_neighbors=<span class="hljs-number">2</span>, algorithm=<span class="hljs-string">&#x27;ball_tree&#x27;</span>).fit(X)<br>distances, indices = nbrs.kneighbors(X)<br>indices <br>distances<br></code></pre></td></tr></table></figure>
+<h5 id="因为查询集匹配训练集，每个点的最邻近点是其自身，距离为0"><a href="#因为查询集匹配训练集，每个点的最邻近点是其自身，距离为0" class="headerlink" title="#  因为查询集匹配训练集，每个点的最邻近点是其自身，距离为0"></a>#  因为查询集匹配训练集，每个点的最邻近点是其自身，距离为0</h5><h5 id="还可以有效地生成一个稀疏图来标识相连点之间的连接情况"><a href="#还可以有效地生成一个稀疏图来标识相连点之间的连接情况" class="headerlink" title="#还可以有效地生成一个稀疏图来标识相连点之间的连接情况"></a>#还可以有效地生成一个稀疏图来标识相连点之间的连接情况</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">nbrs.kneighbors_graph(X).toarray()<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.neighbors <span class="hljs-keyword">import</span> KDTree<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br>X = np.array([[-<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>], [-<span class="hljs-number">2</span>, -<span class="hljs-number">1</span>], [-<span class="hljs-number">3</span>, -<span class="hljs-number">2</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">2</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">2</span>]])<br>kdt = KDTree(X, leaf_size=<span class="hljs-number">30</span>, metric=<span class="hljs-string">&#x27;euclidean&#x27;</span>)<br>kdt.query(X, k=<span class="hljs-number">2</span>, return_distance=<span class="hljs-literal">False</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  最近质心分类</span><br><br><span class="hljs-keyword">from</span> sklearn.neighbors.nearest_centroid <span class="hljs-keyword">import</span> NearestCentroid<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br>X = np.array([[-<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>], [-<span class="hljs-number">2</span>, -<span class="hljs-number">1</span>], [-<span class="hljs-number">3</span>, -<span class="hljs-number">2</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">2</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">2</span>]])<br>y = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>])<br>clf = NearestCentroid()<br><span class="hljs-built_in">print</span>(clf.fit(X, y))<br><br><span class="hljs-built_in">print</span>(clf.predict([[-<span class="hljs-number">0.8</span>, -<span class="hljs-number">1</span>]]))<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  利用 scikit-learn 包中的 train_test_split 辅助函数</span><br><span class="hljs-comment">#  可以很快地将实验数据集划分为任何训练集（training sets）和测试集（test sets）。</span><br><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split<br><span class="hljs-keyword">from</span> sklearn <span class="hljs-keyword">import</span> datasets<br><span class="hljs-keyword">from</span> sklearn <span class="hljs-keyword">import</span> svm<br><br>iris = datasets.load_iris()<br>iris.data.shape, iris.target.shape<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  我们能快速采样到原数据集的 40% 作为测试集，从而测评（评估）我们的分类器</span><br><br>X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=<span class="hljs-number">0.4</span>, random_state=<span class="hljs-number">0</span>)<br><br>X_train.shape, y_train.shape<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">X_test.shape, y_test.shape<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">clf = svm.SVC(kernel=<span class="hljs-string">&#x27;linear&#x27;</span>, C=<span class="hljs-number">1</span>).fit(X_train, y_train)<br>clf.score(X_test, y_test)    <span class="hljs-comment">#  交叉验证评估估计器性能</span><br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/python-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">python+机器学习+数据分析</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+              </div>
+              <!-- 
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+               -->
+
+              
+                <p class="note note-warning">
+                <strong>本文作者: </strong><a href="/">水寿先生</a> <br>
+                <strong>本文链接: </strong><a href="http://chen320.github.io/2022/07/15/KNN%E7%AE%97%E6%B3%95/">http://chen320.github.io/2022/07/15/KNN%E7%AE%97%E6%B3%95/</a> <br>
+                <strong>版权声明: </strong>本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                </p>
+              
+
+
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/15/2021%E5%B9%B4%E4%BF%A1%E6%81%AF%E7%B4%A0%E5%85%BB%E5%A4%A7%E8%B5%9B%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">21年全国大学生计算机应用能力与信息素养大赛</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/15/python%E9%87%8D%E7%82%B9%E5%B7%A5%E5%85%B7%E6%8E%8C%E6%8F%A1/">
+                        <span class="hidden-mobile">python-重点工具(Matplotlib)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"7GgfPxgdU2CcwlhdqMFDascs-gzGzoHsz","appKey":"iQjxbFjeMOGRmMhYhY2jA9sp","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/liangbian.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/xiantiao.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/dianji.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js"></script>
+<script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

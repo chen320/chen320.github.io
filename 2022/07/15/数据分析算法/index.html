@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/null">
+  <link rel="icon" href="https://ts1.cn.mm.bing.net/th/id/R-C.f408176d301eba722a97bcc4d045cbc7?rik=J%2bK47GXYGgKyOw&amp;riu=http%3a%2f%2fstatic.oschina.net%2fuploads%2fspace%2f2015%2f0629%2f165329_EdoG_1767531.png&amp;ehk=ZIVbH06spduNSMSM0N3kkzz8ylv0o4zwwb%2fySRRRV00%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Chentao">
+  <meta name="keywords" content="">
+  <meta name="description" content="一、KNN最邻近分类理论概念#  预测属于哪一种类型#  接近k的邻居，就可以归为这一类#  更偏向于哪一个123456import numpy as npimport pandas as pdimport matplotlib.pyplot as pltfrom scipy import stats%matplotlib inlinefrom sklearn.linear_model impor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据分析常见五种算法">
+<meta property="og:url" content="http://chen320.github.io/2022/07/15/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Chen&#39;s Blog">
+<meta property="og:description" content="一、KNN最邻近分类理论概念#  预测属于哪一种类型#  接近k的邻居，就可以归为这一类#  更偏向于哪一个123456import numpy as npimport pandas as pdimport matplotlib.pyplot as pltfrom scipy import stats%matplotlib inlinefrom sklearn.linear_model impor">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-15T01:57:54.128Z">
+<meta property="article:author" content="Chentao">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>数据分析常见五种算法 - Chen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/gundong.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/dazi.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chen320.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"7GgfPxgdU2CcwlhdqMFDascs-gzGzoHsz","app_key":"iQjxbFjeMOGRmMhYhY2jA9sp","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>水寿先生</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                个人
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.pixabay.com/photo/2021/12/27/21/37/church-6898286_960_720.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数据分析常见五种算法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-15 00:00" pubdate>
+        July 15, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        阅读量:<span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据分析常见五种算法</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：July 15, 2022 am
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id="一、KNN最邻近分类理论概念"><a href="#一、KNN最邻近分类理论概念" class="headerlink" title="一、KNN最邻近分类理论概念"></a>一、KNN最邻近分类理论概念</h3><h5 id="预测属于哪一种类型"><a href="#预测属于哪一种类型" class="headerlink" title="#  预测属于哪一种类型"></a>#  预测属于哪一种类型</h5><h5 id="接近k的邻居，就可以归为这一类"><a href="#接近k的邻居，就可以归为这一类" class="headerlink" title="#  接近k的邻居，就可以归为这一类"></a>#  接近k的邻居，就可以归为这一类</h5><h5 id="更偏向于哪一个"><a href="#更偏向于哪一个" class="headerlink" title="#  更偏向于哪一个"></a>#  更偏向于哪一个</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> scipy <span class="hljs-keyword">import</span> stats<br>%matplotlib inline<br><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn <span class="hljs-keyword">import</span> neighbors  <span class="hljs-comment">#  导入KNN分类模块</span><br><span class="hljs-keyword">import</span> warnings<br>warnings.filterwarnings(<span class="hljs-string">&#x27;ignore&#x27;</span>)<br><span class="hljs-comment">#  不发出警告</span><br><br>data = pd.DataFrame(&#123; <span class="hljs-string">&#x27;fight&#x27;</span>:[<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">101</span>,<span class="hljs-number">99</span>,<span class="hljs-number">98</span>],<br>                    <span class="hljs-string">&#x27;kiss&#x27;</span>:[<span class="hljs-number">104</span>,<span class="hljs-number">100</span>,<span class="hljs-number">81</span>,<span class="hljs-number">10</span>,<span class="hljs-number">5</span>,<span class="hljs-number">2</span>],<br>                    <span class="hljs-string">&#x27;type&#x27;</span>:[<span class="hljs-string">&#x27;R&#x27;</span>,<span class="hljs-string">&#x27;R&#x27;</span>,<span class="hljs-string">&#x27;R&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>,<span class="hljs-string">&#x27;A&#x27;</span>],<br>                    <span class="hljs-string">&#x27;name&#x27;</span>:[<span class="hljs-string">&#x27;北京遇上西雅图&#x27;</span>,<span class="hljs-string">&#x27;喜欢你&#x27;</span>,<span class="hljs-string">&#x27;疯狂动物城&#x27;</span>,<span class="hljs-string">&#x27;战狼2&#x27;</span>,<span class="hljs-string">&#x27;力王&#x27;</span>,<span class="hljs-string">&#x27;敢死队&#x27;</span>]&#125;)<br><span class="hljs-built_in">print</span>(data)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;----&#x27;</span>)<br><span class="hljs-comment">#  创建数据</span><br><br>plt.scatter(data[data[<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;R&#x27;</span>][<span class="hljs-string">&#x27;fight&#x27;</span>],data[data[<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;R&#x27;</span>][<span class="hljs-string">&#x27;kiss&#x27;</span>],color = <span class="hljs-string">&#x27;r&#x27;</span>,marker = <span class="hljs-string">&#x27;o&#x27;</span>,label = <span class="hljs-string">&#x27;R&#x27;</span>)<br>plt.scatter(data[data[<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;A&#x27;</span>][<span class="hljs-string">&#x27;fight&#x27;</span>],data[data[<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;A&#x27;</span>][<span class="hljs-string">&#x27;kiss&#x27;</span>],color = <span class="hljs-string">&#x27;r&#x27;</span>,marker = <span class="hljs-string">&#x27;o&#x27;</span>,label = <span class="hljs-string">&#x27;A&#x27;</span>)<br>plt.grid()<br>plt.legend()<br><br>knn = neighbors.KNeighborsClassifier()<br>knn.fit(data[[<span class="hljs-string">&#x27;fight&#x27;</span>,<span class="hljs-string">&#x27;kiss&#x27;</span>]],data[<span class="hljs-string">&#x27;type&#x27;</span>])<br><br>knn.predict([<span class="hljs-number">18</span>,<span class="hljs-number">90</span>])<br>plt.scatter(<span class="hljs-number">18</span>,<span class="hljs-number">90</span>,color = <span class="hljs-string">&#x27;r&#x27;</span>,marker=<span class="hljs-string">&#x27;x&#x27;</span>,label = <span class="hljs-string">&#x27;R&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;kiss&#x27;</span>)<br>plt.xlabel(<span class="hljs-string">&#x27;fight&#x27;</span>)<br>plt.text(<span class="hljs-number">18</span>,<span class="hljs-number">90</span>,<span class="hljs-string">&#x27;《你的名字》&#x27;</span>,color=<span class="hljs-string">&#x27;r&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">data2 = pd.DataFrame(np.random.rand(<span class="hljs-number">100</span>,<span class="hljs-number">2</span>)*<span class="hljs-number">50</span>,columns = [<span class="hljs-string">&#x27;fight&#x27;</span>,<span class="hljs-string">&#x27;kiss&#x27;</span>])<br>data2[<span class="hljs-string">&#x27;typetest&#x27;</span>] = knn.predict(data2)<br><br>plt.scatter(data[data[<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;R&#x27;</span>][<span class="hljs-string">&#x27;fight&#x27;</span>],data[data[<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;R&#x27;</span>][<span class="hljs-string">&#x27;kiss&#x27;</span>],color = <span class="hljs-string">&#x27;r&#x27;</span>,marker = <span class="hljs-string">&#x27;o&#x27;</span>,label = <span class="hljs-string">&#x27;R&#x27;</span>)<br>plt.scatter(data[data[<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;A&#x27;</span>][<span class="hljs-string">&#x27;fight&#x27;</span>],data[data[<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;A&#x27;</span>][<span class="hljs-string">&#x27;kiss&#x27;</span>],color = <span class="hljs-string">&#x27;r&#x27;</span>,marker = <span class="hljs-string">&#x27;o&#x27;</span>,label = <span class="hljs-string">&#x27;A&#x27;</span>)<br>plt.grid()<br>plt.legend()<br>plt.scatter(data2[data2[<span class="hljs-string">&#x27;typetest&#x27;</span>] == <span class="hljs-string">&#x27;R&#x27;</span>][<span class="hljs-string">&#x27;fight&#x27;</span>],data2[data2[<span class="hljs-string">&#x27;typetest&#x27;</span>] == <span class="hljs-string">&#x27;R&#x27;</span>][<span class="hljs-string">&#x27;kiss&#x27;</span>],color = <span class="hljs-string">&#x27;r&#x27;</span>,marker = <span class="hljs-string">&#x27;x&#x27;</span>,label = <span class="hljs-string">&#x27;R&#x27;</span>)<br>plt.scatter(data2[data2[<span class="hljs-string">&#x27;typetest&#x27;</span>] == <span class="hljs-string">&#x27;A&#x27;</span>][<span class="hljs-string">&#x27;fight&#x27;</span>],data2[data2[<span class="hljs-string">&#x27;typetest&#x27;</span>] == <span class="hljs-string">&#x27;A&#x27;</span>][<span class="hljs-string">&#x27;kiss&#x27;</span>],color = <span class="hljs-string">&#x27;g&#x27;</span>,marker = <span class="hljs-string">&#x27;x&#x27;</span>,label = <span class="hljs-string">&#x27;A&#x27;</span>)<br><br>data2.head()<br></code></pre></td></tr></table></figure>
+<h3 id="二、K均值算法逻辑"><a href="#二、K均值算法逻辑" class="headerlink" title="二、K均值算法逻辑"></a>二、K均值算法逻辑</h3><h5 id="1、-随机生k个初始点作为质心"><a href="#1、-随机生k个初始点作为质心" class="headerlink" title="#  1、 随机生k个初始点作为质心"></a>#  1、 随机生k个初始点作为质心</h5><h5 id="2、-将数据集中的数据按照距离质心的远近分到各个簇中"><a href="#2、-将数据集中的数据按照距离质心的远近分到各个簇中" class="headerlink" title="#  2、 将数据集中的数据按照距离质心的远近分到各个簇中"></a>#  2、 将数据集中的数据按照距离质心的远近分到各个簇中</h5><h5 id="3、-将各个簇中的数据求平均值，作为新的质心，重复上一步，直到所有的簇不再改变"><a href="#3、-将各个簇中的数据求平均值，作为新的质心，重复上一步，直到所有的簇不再改变" class="headerlink" title="#  3、 将各个簇中的数据求平均值，作为新的质心，重复上一步，直到所有的簇不再改变"></a>#  3、 将各个簇中的数据求平均值，作为新的质心，重复上一步，直到所有的簇不再改变</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> scipy <span class="hljs-keyword">import</span> stats<br>%matplotlib inline<br><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.datasets.samples_generator <span class="hljs-keyword">import</span> make_blobs<br><span class="hljs-comment">#  make_blobs聚类数据生成器</span><br><br>x,y_true = make_blobs(n_samples =<span class="hljs-number">300</span>,    <span class="hljs-comment">#生成300条数据</span><br>                     centers = <span class="hljs-number">4</span>,         <span class="hljs-comment">#  四类数据</span><br>                     cluster_std = <span class="hljs-number">0.5</span>,    <span class="hljs-comment">#  方差一致</span><br>                     random_state =<span class="hljs-number">0</span>)<br><span class="hljs-built_in">print</span>(x[:<span class="hljs-number">5</span>])<br><span class="hljs-built_in">print</span>(y_true[:<span class="hljs-number">5</span>])<br><span class="hljs-comment">#  x（生成数据值）     y（生成数据值对应的类别标签）</span><br><br>plt.scatter(x[:,<span class="hljs-number">0</span>],x[:,<span class="hljs-number">1</span>],s = <span class="hljs-number">10</span>,alpha= <span class="hljs-number">0.8</span>)<br>plt.grid()<br><span class="hljs-comment">#  绘制图表</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.cluster <span class="hljs-keyword">import</span> KMeans<br>kmeans = KMeans(n_clusters=<span class="hljs-number">4</span>)<br>kmeans.fit(x)<br>y_kmeans = kmeans.predict(x)<br>y_kmeans<br><br>plt.scatter(x[:,<span class="hljs-number">0</span>],x[:,<span class="hljs-number">1</span>],c = y_kmeans,cmap = <span class="hljs-string">&quot;Dark2&quot;</span>,s =<span class="hljs-number">50</span>,alpha =<span class="hljs-number">0.5</span>,marker = <span class="hljs-string">&#x27;x&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="三、PCA主要成分分析"><a href="#三、PCA主要成分分析" class="headerlink" title="三、PCA主要成分分析"></a>三、PCA主要成分分析</h3><h5 id="将测量对象的群体按照相似性-和-相异性-进行不同群组的划分，划分后每个群组内部各对象相似度很高，而不同群组对象之间彼此相异度很高"><a href="#将测量对象的群体按照相似性-和-相异性-进行不同群组的划分，划分后每个群组内部各对象相似度很高，而不同群组对象之间彼此相异度很高" class="headerlink" title="将测量对象的群体按照相似性 和 相异性 进行不同群组的划分，划分后每个群组内部各对象相似度很高，而不同群组对象之间彼此相异度很高"></a>将测量对象的群体按照相似性 和 相异性 进行不同群组的划分，划分后每个群组内部各对象相似度很高，而不同群组对象之间彼此相异度很高</h5><h5 id="回归-、-分类-—-用于预测"><a href="#回归-、-分类-—-用于预测" class="headerlink" title="回归 、 分类  —-  用于预测"></a>回归 、 分类  —-  用于预测</h5><h5 id="聚类-—-产生一组集合，可用于降维（在没有因变量的前提下直接对数据进行降维）"><a href="#聚类-—-产生一组集合，可用于降维（在没有因变量的前提下直接对数据进行降维）" class="headerlink" title="聚类 — 产生一组集合，可用于降维（在没有因变量的前提下直接对数据进行降维）"></a>聚类 — 产生一组集合，可用于降维（在没有因变量的前提下直接对数据进行降维）</h5><h5 id="取出保持原有信息的核心数据（效率很高）"><a href="#取出保持原有信息的核心数据（效率很高）" class="headerlink" title="取出保持原有信息的核心数据（效率很高）"></a>取出保持原有信息的核心数据（效率很高）</h5><h5 id="其实是先降维，然后再从新的维度中根据贡献大小来提出主成分"><a href="#其实是先降维，然后再从新的维度中根据贡献大小来提出主成分" class="headerlink" title="其实是先降维，然后再从新的维度中根据贡献大小来提出主成分"></a>其实是先降维，然后再从新的维度中根据贡献大小来提出主成分</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> scipy <span class="hljs-keyword">import</span> stats<br>%matplotlib inline<br><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  二维数组降维</span><br>rng = np.random.RandomState(<span class="hljs-number">8</span>)<br>data = np.dot(rng.rand(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>),rng.randn(<span class="hljs-number">2</span>,<span class="hljs-number">200</span>))   <span class="hljs-comment">#  矩阵相乘的方法</span><br>df = pd.DataFrame(&#123;<span class="hljs-string">&#x27;x1&#x27;</span>:data[:,<span class="hljs-number">0</span>],<br>                  <span class="hljs-string">&#x27;x2&#x27;</span>:data[:,<span class="hljs-number">1</span>]&#125;)<br><span class="hljs-built_in">print</span>(df.head())<br><span class="hljs-built_in">print</span>(df.shape)<br><br>plt.scatter(df[<span class="hljs-string">&#x27;x1&#x27;</span>],df[<span class="hljs-string">&#x27;x2&#x27;</span>],alpha = <span class="hljs-number">0.8</span>,marker =<span class="hljs-string">&#x27;.&#x27;</span>)<br>plt.axis(<span class="hljs-string">&#x27;equal&#x27;</span>)<br>plt.grid()<br><span class="hljs-comment"># 生成图表</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  二维数据降维</span><br><span class="hljs-comment">#  构建模型，分析主成分</span><br><br><span class="hljs-keyword">from</span> sklearn.decomposition <span class="hljs-keyword">import</span> PCA<br><span class="hljs-comment"># 加载主成分分析模块PCA</span><br><br>pca = PCA(n_components =<span class="hljs-number">1</span>)   <span class="hljs-comment">#  降为1维</span><br>pca.fit(df)   <span class="hljs-comment">#  构建模型</span><br><br><span class="hljs-built_in">print</span>(pca.explained_variance_)  <span class="hljs-comment">#  特征值</span><br><span class="hljs-built_in">print</span>(pca.components_)     <span class="hljs-comment"># 特征向量</span><br><span class="hljs-built_in">print</span>(pca.n_components)   <span class="hljs-comment">#  保留成分的个数</span><br><br>x_pca = pca.transform(df)<br><span class="hljs-built_in">print</span>(x_pca)<br><span class="hljs-comment">#  算出最后的结果</span><br><br>x_new = pca.inverse_transform(x_pca)<br>x_new<br><span class="hljs-comment">#  得到原来对的数据</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 多维数据降维</span><br><span class="hljs-comment">#  加载数据</span><br><br><span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_digits<br>digits = load_digits()<br><span class="hljs-comment">#print(digits)</span><br><span class="hljs-built_in">print</span>(digits.keys())<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;数据长度为:%i条&#x27;</span>% <span class="hljs-built_in">len</span>(digits[<span class="hljs-string">&#x27;data&#x27;</span>]))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;数据形状为:&#x27;</span>,digits.data.shape)<br><span class="hljs-built_in">print</span>(digits.data[:<span class="hljs-number">2</span>])<br><span class="hljs-comment">#  导入数据</span><br><br>pca = PCA(n_components =<span class="hljs-number">2</span>)   <span class="hljs-comment">#  降为2维</span><br>projected = pca.fit_transform(digits.data)<br>projected[:<span class="hljs-number">5</span>]<br><br>plt.scatter(projected[:,<span class="hljs-number">0</span>],projected[:,<span class="hljs-number">1</span>],<br>           c = digits.target,edgecolor = <span class="hljs-string">&#x27;none&#x27;</span>,alpha=<span class="hljs-number">0.8</span>,<br>           cmap = <span class="hljs-string">&#x27;Reds&#x27;</span>,s =<span class="hljs-number">5</span>)<br>plt.axis(<span class="hljs-string">&#x27;equal&#x27;</span>)<br>plt.grid()<br>plt.colorbar()<br><span class="hljs-comment">#  绘制二维数据图</span><br></code></pre></td></tr></table></figure>
+<h3 id="四、线性回归理论概念"><a href="#四、线性回归理论概念" class="headerlink" title="四、线性回归理论概念"></a>四、线性回归理论概念</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> scipy <span class="hljs-keyword">import</span> stats<br>%matplotlib inline<br></code></pre></td></tr></table></figure>
+<h5 id="自变量可以是离散的，结果是连续的"><a href="#自变量可以是离散的，结果是连续的" class="headerlink" title="#  自变量可以是离散的，结果是连续的"></a>#  自变量可以是离散的，结果是连续的</h5><h5 id="区分好自变量和因变量"><a href="#区分好自变量和因变量" class="headerlink" title="#  区分好自变量和因变量"></a>#  区分好自变量和因变量</h5><h5 id="拟合数据"><a href="#拟合数据" class="headerlink" title="# 拟合数据"></a># 拟合数据</h5><h5 id="误差项和为0（均值为0），也就是说符合标准差的一个正态分布，但是拟合直线不要求完全服从，但是要求尽量趋近"><a href="#误差项和为0（均值为0），也就是说符合标准差的一个正态分布，但是拟合直线不要求完全服从，但是要求尽量趋近" class="headerlink" title="#  误差项和为0（均值为0），也就是说符合标准差的一个正态分布，但是拟合直线不要求完全服从，但是要求尽量趋近"></a>#  误差项和为0（均值为0），也就是说符合标准差的一个正态分布，但是拟合直线不要求完全服从，但是要求尽量趋近</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  线性回归的python实现方法</span><br><span class="hljs-comment">#  简单线性回归（一元线性回归）</span><br><br><span class="hljs-comment">#  （1）  数据案例</span><br><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression<br><span class="hljs-comment">#  导入线性回归模块</span><br><br>rang = np.random.RandomState(<span class="hljs-number">1</span>)   <span class="hljs-comment">#  随机数种子，对于一个随机数发生器，只要该种子一样，产生的随机数序列就是相同的</span><br>xtrain = <span class="hljs-number">10</span> * rang.rand(<span class="hljs-number">30</span>)<br>ytrain = <span class="hljs-number">8</span> + <span class="hljs-number">4</span> * xtrain + rang.rand(<span class="hljs-number">30</span>)<br><span class="hljs-comment">#  y  = 8+ 4*x(大概的)</span><br><br>fig = plt.figure(figsize = (<span class="hljs-number">12</span>,<span class="hljs-number">3</span>))<br>ax1 = fig.add_subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)<br>plt.scatter(xtrain,ytrain,marker = <span class="hljs-string">&#x27;.&#x27;</span>,color = <span class="hljs-string">&#x27;k&#x27;</span>)<br>plt.grid()<br><span class="hljs-comment">#plt.title(&#x27;样本数据散点图&#x27;)</span><br><span class="hljs-comment">#  生成散点图</span><br><br>model = LinearRegression()  <br>model.fit(xtrain[:,np.newaxis],ytrain)      <span class="hljs-comment">#  首先把x变成列形式的值</span><br><br><span class="hljs-built_in">print</span>(model.coef_)<span class="hljs-comment"># 斜率</span><br><span class="hljs-built_in">print</span>(model.intercept_)<br><br>xtest = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">90</span>)<br>ytest = model.predict(xtest[:,np.newaxis])<br><br>ax2 = fig.add_subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)<br>plt.scatter(xtrain,ytrain,marker = <span class="hljs-string">&#x27;.&#x27;</span>,color = <span class="hljs-string">&#x27;k&#x27;</span>)<br>plt.scatter(xtest,ytest,color = <span class="hljs-string">&#x27;r&#x27;</span>,alpha = <span class="hljs-number">0.2</span>)<br>plt.grid()<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python">rng  = np.random.RandomState(<span class="hljs-number">5</span>)<br>xtrain = <span class="hljs-number">10</span> * rng.rand(<span class="hljs-number">150</span>,<span class="hljs-number">4</span>)<br>ytrain = <span class="hljs-number">20</span> + np.dot(xtrain,[<span class="hljs-number">1.5</span>,<span class="hljs-number">2</span>,-<span class="hljs-number">4</span>,<span class="hljs-number">3</span>])<br>df = pd.DataFrame(xtrain,columns = [<span class="hljs-string">&#x27;b1&#x27;</span>,<span class="hljs-string">&#x27;b2&#x27;</span>,<span class="hljs-string">&#x27;b3&#x27;</span>,<span class="hljs-string">&#x27;b4&#x27;</span>])<br>df[<span class="hljs-string">&#x27;y&#x27;</span>] = ytrain<br><br>pd.plotting.scatter_matrix(df[[<span class="hljs-string">&#x27;b1&#x27;</span>,<span class="hljs-string">&#x27;b2&#x27;</span>,<span class="hljs-string">&#x27;b3&#x27;</span>,<span class="hljs-string">&#x27;b4&#x27;</span>]],figsize= (<span class="hljs-number">10</span>,<span class="hljs-number">6</span>),<br>                 diagonal = <span class="hljs-string">&#x27;kde&#x27;</span>,<br>                 alpha = <span class="hljs-number">0.5</span>,<br>                 range_padding=<span class="hljs-number">0.1</span>)<br><span class="hljs-built_in">print</span>(df.head())<br><br><span class="hljs-comment">#  四个变量相互独立</span><br><br>model = LinearRegression()  <br>model.fit(df[[<span class="hljs-string">&#x27;b1&#x27;</span>,<span class="hljs-string">&#x27;b2&#x27;</span>,<span class="hljs-string">&#x27;b3&#x27;</span>,<span class="hljs-string">&#x27;b4&#x27;</span>]],df[<span class="hljs-string">&#x27;y&#x27;</span>])  <br><span class="hljs-comment">#  多元回归拟合</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;斜率为:&#x27;</span>,model.coef_)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;截距为:%.4f&#x27;</span>%model.intercept_)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;线性回归函数是：\ny = %.lfx1 + %.lfx2 + %.lfx3 +  %.lfx4 + %.lf&#x27;</span><br>     %(model.coef_[<span class="hljs-number">0</span>],model.coef_[<span class="hljs-number">1</span>],model.coef_[<span class="hljs-number">2</span>],model.coef_[<span class="hljs-number">3</span>],model.intercept_))<br><span class="hljs-comment"># 参数输出</span><br></code></pre></td></tr></table></figure>
+<h3 id="五、线性回归模型的评估"><a href="#五、线性回归模型的评估" class="headerlink" title="五、线性回归模型的评估"></a>五、线性回归模型的评估</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> scipy <span class="hljs-keyword">import</span> stats<br>%matplotlib inline<br><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression<br></code></pre></td></tr></table></figure>
+<p>SSE（和方差） ：  最后拟合数据和原始数据所对应点的误差的平方和,越接近于0，拟合越好，数据预测更准确均方差（SSE/N）  、  均方根(均方根的平方根)</p>
+<p>R- square确定系数：<br>SSR（预测数据和原始数据均值之差的平方和）<br>SST（原始数据和均值之差的平方根）<br>SST = SSE +SSR<br>R- square = 1 - SSE/SST</p>
+<h5 id="越接近1，表明方程的变量对y的解释能力越强，这个模型对数据拟合的也比较好"><a href="#越接近1，表明方程的变量对y的解释能力越强，这个模型对数据拟合的也比较好" class="headerlink" title="越接近1，表明方程的变量对y的解释能力越强，这个模型对数据拟合的也比较好"></a>越接近1，表明方程的变量对y的解释能力越强，这个模型对数据拟合的也比较好</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn <span class="hljs-keyword">import</span> metrics<br><br>rang = np.random.RandomState(<span class="hljs-number">1</span>)   <span class="hljs-comment">#  随机数种子，对于一个随机数发生器，只要该种子一样，产生的随机数序列就是相同的</span><br>xtrain = <span class="hljs-number">10</span> * rang.rand(<span class="hljs-number">30</span>)<br>ytrain = <span class="hljs-number">8</span> + <span class="hljs-number">4</span> * xtrain + rang.rand(<span class="hljs-number">30</span>)*<span class="hljs-number">3</span><br><span class="hljs-comment">#  创建数据</span><br><br>model = LinearRegression()  <br>model.fit(xtrain[:,np.newaxis],ytrain) <br><span class="hljs-comment">#  多元回归拟合</span><br><br>ytest = model.predict(xtrain[:,np.newaxis])<br>mse =  metrics.mean_absolute_error(ytrain,ytest)<br>rmse = np.sqrt(mse)<br><span class="hljs-built_in">print</span>(mse)<br><span class="hljs-built_in">print</span>(rmse)<br><br>ssr = ((ytest-ytrain.mean())**<span class="hljs-number">2</span>).<span class="hljs-built_in">sum</span>()<br>sst = ((ytrain-ytrain.mean())**<span class="hljs-number">2</span>).<span class="hljs-built_in">sum</span>()<br>r2 = ssr/sst<br>r2  <br><br>r22 = model.score(xtrain[:,np.newaxis],ytrain)<br><span class="hljs-built_in">print</span>(r22)<br><span class="hljs-built_in">print</span>(r2)<br></code></pre></td></tr></table></figure>
+<h3 id="六、蒙塔卡罗模拟"><a href="#六、蒙塔卡罗模拟" class="headerlink" title="六、蒙塔卡罗模拟"></a>六、蒙塔卡罗模拟</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">from</span> scipy <span class="hljs-keyword">import</span> stats<br>%matplotlib inline<br><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression<br></code></pre></td></tr></table></figure>
+<h5 id="随机抽样或统计实验方法"><a href="#随机抽样或统计实验方法" class="headerlink" title="#   随机抽样或统计实验方法"></a>#   随机抽样或统计实验方法</h5><h5 id="1、构造或描述概率过程"><a href="#1、构造或描述概率过程" class="headerlink" title="1、构造或描述概率过程"></a>1、构造或描述概率过程</h5><h5 id="2、实现从已知概率分布抽样"><a href="#2、实现从已知概率分布抽样" class="headerlink" title="2、实现从已知概率分布抽样"></a>2、实现从已知概率分布抽样</h5><h5 id="3、建立各种估量值"><a href="#3、建立各种估量值" class="headerlink" title="3、建立各种估量值"></a>3、建立各种估量值</h5><h5 id="随机采样上计算得到近似值，随着采样的增多，得到对的结果是正确结果的概率逐渐增大"><a href="#随机采样上计算得到近似值，随着采样的增多，得到对的结果是正确结果的概率逐渐增大" class="headerlink" title="随机采样上计算得到近似值，随着采样的增多，得到对的结果是正确结果的概率逐渐增大"></a>随机采样上计算得到近似值，随着采样的增多，得到对的结果是正确结果的概率逐渐增大</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python">n = <span class="hljs-number">10000</span><br>r = <span class="hljs-number">1.0</span><br>a,b = (<span class="hljs-number">0.0</span>,<span class="hljs-number">0.0</span>)<br><br>xmin,xmax = a-r,a+r<br>ymin,ymax = b-r,b+r<br><br>x = np.random.uniform(xmin,xmax,n)<br>y = np.random.uniform(ymin,ymax,n)<br><br>fig = plt.figure(figsize=(<span class="hljs-number">6</span>,<span class="hljs-number">6</span>))<br>axes = fig.add_subplot(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)<br>plt.plot(x,y,<span class="hljs-string">&#x27;ro&#x27;</span>,markersize=<span class="hljs-number">1</span>)<br>plt.axis(<span class="hljs-string">&#x27;equal&#x27;</span>)<br><br>d = np.sqrt((x-a)**<span class="hljs-number">2</span> + (y-b)**<span class="hljs-number">2</span>)<br>res = <span class="hljs-built_in">sum</span>(np.where(d&lt;r,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>))<br>pi = <span class="hljs-number">4</span> * res /n<br>pi<br><br><span class="hljs-keyword">from</span> matplotlib.patches <span class="hljs-keyword">import</span> Circle<br>circle = Circle(xy = (a,b),radius =r,alpha =<span class="hljs-number">0.5</span>,color = <span class="hljs-string">&#x27;gray&#x27;</span>)<br>axes.add_patch(circle)<br>plt.grid(<span class="hljs-literal">True</span>,linestyle = <span class="hljs-string">&#x27;--&#x27;</span>,linewidth = <span class="hljs-string">&#x27;0.8&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/python-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">python+机器学习+数据分析</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+              </div>
+              <!-- 
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+               -->
+
+              
+                <p class="note note-warning">
+                <strong>本文作者: </strong><a href="/">水寿先生</a> <br>
+                <strong>本文链接: </strong><a href="http://chen320.github.io/2022/07/15/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95/">http://chen320.github.io/2022/07/15/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95/</a> <br>
+                <strong>版权声明: </strong>本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                </p>
+              
+
+
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/15/python%E9%87%8D%E7%82%B9%E5%B7%A5%E5%85%B7%E6%8E%8C%E6%8F%A1%EF%BC%88pandas%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">python-重点工具(Pandas数据结构)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/15/%E4%BA%BA%E7%9A%84%E5%AF%BF%E5%91%BD%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                        <span class="hidden-mobile">数据分析-人的寿命</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"7GgfPxgdU2CcwlhdqMFDascs-gzGzoHsz","appKey":"iQjxbFjeMOGRmMhYhY2jA9sp","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/liangbian.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/xiantiao.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/dianji.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js"></script>
+<script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

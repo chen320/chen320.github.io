@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/null">
+  <link rel="icon" href="https://ts1.cn.mm.bing.net/th/id/R-C.f408176d301eba722a97bcc4d045cbc7?rik=J%2bK47GXYGgKyOw&amp;riu=http%3a%2f%2fstatic.oschina.net%2fuploads%2fspace%2f2015%2f0629%2f165329_EdoG_1767531.png&amp;ehk=ZIVbH06spduNSMSM0N3kkzz8ylv0o4zwwb%2fySRRRV00%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Chentao">
+  <meta name="keywords" content="">
+  <meta name="description" content="随机森林处理二分类问题12345import pandas as pdimport numpy as npimport matplotlib.pyplot as pltdata&#x3D;pd.read_table(&amp;#x27;C:&#x2F;Users&#x2F;86155&#x2F;Desktop&#x2F;Features.txt&amp;#x27;,engine&#x3D;&amp;#x27;python&amp;#x27;) 12345678910111213# .未调">
+<meta property="og:type" content="article">
+<meta property="og:title" content="随机森林处理二分类问题">
+<meta property="og:url" content="http://chen320.github.io/2022/07/15/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97%E5%A4%84%E7%90%86%E4%BA%8C%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Chen&#39;s Blog">
+<meta property="og:description" content="随机森林处理二分类问题12345import pandas as pdimport numpy as npimport matplotlib.pyplot as pltdata&#x3D;pd.read_table(&amp;#x27;C:&#x2F;Users&#x2F;86155&#x2F;Desktop&#x2F;Features.txt&amp;#x27;,engine&#x3D;&amp;#x27;python&amp;#x27;) 12345678910111213# .未调">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-15T01:22:15.954Z">
+<meta property="article:author" content="Chentao">
+<meta property="article:tag" content="数据分析">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>随机森林处理二分类问题 - Chen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/gundong.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/dazi.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chen320.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"7GgfPxgdU2CcwlhdqMFDascs-gzGzoHsz","app_key":"iQjxbFjeMOGRmMhYhY2jA9sp","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>水寿先生</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                个人
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.pixabay.com/photo/2021/12/27/21/37/church-6898286_960_720.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="随机森林处理二分类问题">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-15 00:00" pubdate>
+        July 15, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        阅读量:<span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">随机森林处理二分类问题</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：July 15, 2022 am
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id="随机森林处理二分类问题"><a href="#随机森林处理二分类问题" class="headerlink" title="随机森林处理二分类问题"></a>随机森林处理二分类问题</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br>data=pd.read_table(<span class="hljs-string">&#x27;C:/Users/86155/Desktop/Features.txt&#x27;</span>,engine=<span class="hljs-string">&#x27;python&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># .未调参时模型精确度</span><br><span class="hljs-comment">#导入相应的库</span><br><br><span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_breast_cancer<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> GridSearchCV<br><span class="hljs-keyword">from</span> sklearn.ensemble <span class="hljs-keyword">import</span> RandomForestClassifier<br><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> cross_val_score<br><span class="hljs-comment">#数据导入</span><br>data = load_breast_cancer()<br>X = data.data<br>y = data.target<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#什么参数也不调整，简单建模，建立base line model</span><br>rfc = RandomForestClassifier(random_state=<span class="hljs-number">90</span>)  <span class="hljs-comment">#基线模型base_line model</span><br>base_score = cross_val_score(rfc, X, y, cv=<span class="hljs-number">10</span>).mean()<br><br>base_score <br></code></pre></td></tr></table></figure>
+<pre><code>0.9648809523809524
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  使用网格搜索对参数一个一个进行调试</span><br><span class="hljs-comment">#  有一些参数是没有参照的，很难说清一个范围，这种情况下我们粗调，看趋势，再细调 </span><br><span class="hljs-comment">#  比如： </span><br>param_grid = &#123;<span class="hljs-string">&#x27;n_estimators&#x27;</span>:np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">200</span>, <span class="hljs-number">10</span>)&#125; <br>param_grid = &#123;<span class="hljs-string">&#x27;max_depth&#x27;</span>:np.arange(<span class="hljs-number">1</span>, <span class="hljs-number">100</span>, <span class="hljs-number">10</span>)&#125; <br><span class="hljs-comment">#  有一些参数是可以找到一个范围的，或者说我们知道他们的取值和随着他们的取值，模型的整体准确率会如何变化， </span><br><span class="hljs-comment">#  这样的参数我们就可以直接跑网格搜索 :</span><br>param_grid = &#123;<span class="hljs-string">&#x27;min_samples_split&#x27;</span>:np.arange(<span class="hljs-number">2</span>, <span class="hljs-number">22</span>, <span class="hljs-number">1</span>)&#125; <br>param_grid = &#123;<span class="hljs-string">&#x27;min_samples_leaf&#x27;</span>:np.arange(<span class="hljs-number">1</span>, <span class="hljs-number">11</span>, <span class="hljs-number">1</span>)&#125; <br>param_grid = &#123;<span class="hljs-string">&#x27;max_features&#x27;</span>:np.arange(<span class="hljs-number">5</span>,<span class="hljs-number">30</span>,<span class="hljs-number">1</span>)&#125; <br>param_grid = &#123;<span class="hljs-string">&#x27;criterion&#x27;</span>:[<span class="hljs-string">&#x27;gini&#x27;</span>, <span class="hljs-string">&#x27;entropy&#x27;</span>]&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 先粗调n_estimators</span><br>scorel = []<br>param_grid = &#123;<span class="hljs-string">&#x27;n_estimators&#x27;</span>:np.arange(<span class="hljs-number">1</span>, <span class="hljs-number">200</span>, <span class="hljs-number">10</span>)&#125;<br><br>rfc = RandomForestClassifier(n_jobs=-<span class="hljs-number">1</span>,<br>                            random_state=<span class="hljs-number">90</span><br>                            )<br><br>gridsearch0 = GridSearchCV(rfc, param_grid=param_grid, cv=<span class="hljs-number">10</span>)<br>gridsearch0.fit(X, y)<br>gridsearch0.best_score_, gridsearch0.best_params_  <span class="hljs-comment"># (0.9631265664160402, &#123;&#x27;n_estimators&#x27;: 71&#125;)</span><br><br>best_score = gridsearch0.best_score_<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#细调n_estimators</span><br><br>scorel = []<br>param_grid = &#123;<span class="hljs-string">&#x27;n_estimators&#x27;</span>:np.arange(<span class="hljs-number">60</span>, <span class="hljs-number">80</span>,<span class="hljs-number">1</span>)&#125;<br><br>rfc = RandomForestClassifier(n_jobs=-<span class="hljs-number">1</span>,<br>                            random_state=<span class="hljs-number">90</span><br>                            )<br>gridsearch1 = GridSearchCV(rfc, param_grid=param_grid, cv=<span class="hljs-number">10</span>)<br>gridsearch1.fit(X, y)<br><br>gridsearch1.best_score_, gridsearch1.best_params_, best_score <span class="hljs-comment"># (0.9666353383458647, &#123;&#x27;n_estimators&#x27;: 73&#125;, 0.9631265664160402)</span><br>best_score = gridsearch1.best_score_<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#调整max_depth</span><br>score1 = []<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">20</span>, <span class="hljs-number">1</span>):<br>    rfc = RandomForestClassifier(<br>                          n_estimators=<span class="hljs-number">73</span>,<br>                           n_jobs=-<span class="hljs-number">1</span>,<br>                            random_state=<span class="hljs-number">90</span>,<br>                            max_depth= i<br>                            )<br>    score = cross_val_score(rfc, X, y, cv = <span class="hljs-number">10</span>).mean()<br>    score1.append(score)<br>    <br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">max</span>(score1), score1.index(<span class="hljs-built_in">max</span>(score1))+<span class="hljs-number">1</span>) <span class="hljs-comment"># 0.9666353383458647 8</span><br><span class="hljs-built_in">print</span>(best_score) <span class="hljs-comment"># 0.9666353383458647</span><br><span class="hljs-comment"># 这次max_depth调整时没有提高精度的</span><br></code></pre></td></tr></table></figure>
+<pre><code>0.9666353383458647 8
+0.9666353383458647
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python">在这里，我们注意到，设置max_depth之后，模型的准确率并未改变，这说明： <br><span class="hljs-number">1</span>）剪枝之前的树深depth=<span class="hljs-number">8</span>； <br><span class="hljs-number">2</span>）限制max_depth&lt;<span class="hljs-number">8</span>，表示对模型进行了剪枝，一旦剪枝，就只会使得模型的准确度降低； <br><span class="hljs-number">3</span>）说明模型目前处于欠拟合的状态。位于上述图像的左边； <br>通常来说，随机森林应该在泛化误差最低点的右边，树模型应该倾向于过拟合，而不是拟合不足。<br>但也有可能是我们调整的n_estimators对于数据集来说太大，因此将模型拉到泛化误差最低点去了。 <br>当模型位于图像左边时，我们需要的是增加模型复杂度的选项，因此max_depth应该尽量大，min_samples_leaf和min_samples_split都应该尽量小。<br>这几乎是在说明，除了max_features，我们没有任何参数可以调整了，因为max_depth，min_samples_leaf和min_samples_split是剪枝参数，是减小复杂度的参数。 <br><br><span class="hljs-comment">#  对于min_samples_split和min_samples_leaf,一般是从他们的最小值开始向上增加10或20 </span><br><span class="hljs-comment">#  面对高维度高样本量数据，如果不放心，也可以直接+50，对于大型数据，可能需要200~300的范围 </span><br><span class="hljs-comment">#  调整的时候发现准确无论如何都上不来，那可以放心大胆调一个很大的数据，大力限制模型的复杂度  </span><br>param_grid = &#123;<span class="hljs-string">&#x27;min_samples_leaf&#x27;</span>:np.arange(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>+<span class="hljs-number">20</span>, <span class="hljs-number">1</span>)&#125;<br>rfc = RandomForestClassifier(n_estimators=<span class="hljs-number">73</span>,<br>                                 n_jobs=-<span class="hljs-number">1</span>,<br>                                 random_state= <span class="hljs-number">90</span>,<br>                                )<br><br>gridsearch3 = GridSearchCV(rfc, param_grid=param_grid, cv=<span class="hljs-number">10</span>)<br>gridsearch3.fit(X, y)<br>gridsearch3.best_score_, gridsearch3.best_params_, best_score<br><span class="hljs-comment"># (0.9666353383458647, &#123;&#x27;min_samples_leaf&#x27;: 1&#125;, 0.9666353383458647)</span><br><span class="hljs-comment"># 验证确实是无效的</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  max_features是唯一一个即能够将模型往左推，也能够将模型往右推的参数。我们需要根据调参前，模型所在的位置（在泛化误差最低点的左边还是右边）来决定我们要将max_features往哪边调。</span><br><span class="hljs-comment">#  现在模型位于图像左侧，我们需要的是更高的复杂度，因此我们应该把max_features往更大的方向调整，可用的特征越多，模型才会越复杂。</span><br><span class="hljs-comment">#  max_features的默认最小值是sqrt(n_features)，因此我们使用这个值作为调参范围的最小值。 </span><br>param_grid = &#123;<span class="hljs-string">&#x27;max_features&#x27;</span>:np.arange(<span class="hljs-number">5</span>,<span class="hljs-number">30</span>,<span class="hljs-number">1</span>)&#125; <br><br>rfc = RandomForestClassifier(n_estimators=<span class="hljs-number">73</span>,<br>                                 n_jobs=-<span class="hljs-number">1</span>,<br>                                 random_state=<span class="hljs-number">90</span>,<br>                                )<br><br>gridsearch4 = GridSearchCV(rfc, param_grid=param_grid, cv=<span class="hljs-number">10</span>)<br>gridsearch4.fit(X, y)<br><br>gridsearch4.best_score_, gridsearch4.best_params_, best_score<br><span class="hljs-comment"># (0.9666666666666668, &#123;&#x27;max_features&#x27;: 24&#125;, 0.9666353383458647)</span><br>best_score = gridsearch4.best_score_<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  最后调整Criterion</span><br><br>param_grid = &#123;<span class="hljs-string">&#x27;criterion&#x27;</span>:[<span class="hljs-string">&#x27;gini&#x27;</span>, <span class="hljs-string">&#x27;entropy&#x27;</span>]&#125;<br>rfc = RandomForestClassifier(n_estimators=<span class="hljs-number">73</span>,<br>                                 n_jobs=-<span class="hljs-number">1</span>,<br>                                 random_state= <span class="hljs-number">90</span>,<br>                                 max_features = <span class="hljs-number">24</span><br>                                )<br><br>gridsearch5 = GridSearchCV(rfc, param_grid=param_grid, cv=<span class="hljs-number">10</span>)<br>gridsearch5.fit(X, y)<br><br>gridsearch5.best_score_, gridsearch5.best_params_, best_score<br><span class="hljs-comment"># (0.9666666666666668, &#123;&#x27;criterion&#x27;: &#x27;gini&#x27;&#125;, 0.9666666666666668)</span><br><br><br></code></pre></td></tr></table></figure>
+<pre><code>(0.9666666666666668, &#123;&#39;criterion&#39;: &#39;gini&#39;&#125;, 0.9666666666666668)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  调整完毕，总结出模型的最佳参数</span><br><br>rfc = RandomForestClassifier(n_estimators=<span class="hljs-number">73</span>,random_state=<span class="hljs-number">90</span>, max_features=<span class="hljs-number">24</span>, n_jobs=-<span class="hljs-number">1</span>)<br>score = cross_val_score(rfc,data.data,data.target,cv=<span class="hljs-number">10</span>).mean()<br>score<br></code></pre></td></tr></table></figure>
+<pre><code>0.9666666666666668
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#  与基线模型进行比对</span><br><br>base_score, score<br></code></pre></td></tr></table></figure>
+<pre><code>(0.9648809523809524, 0.9666666666666668)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python">n_estimators ：<br>森林中树木的数量，即基评估器(学习器)的数量<br>默认是<span class="hljs-number">100</span>，n_estimators变大，模型更复杂， n_estimators变大，模型更简单；不影响单个模型的复杂度 <br><br>max_depth ：<br>树的最大深度，超过最大深度的树枝都会被剪掉<br>默认最大深度，即最高复杂度，如果减小max_depth，就 <br>会向复杂度降低的方向调整，向图像的左边移动 <br><br>min_samples_leaf ：<br>一个节点在分枝后的每个子节点都必须包含至少min_samples_leaf个训练样本，否则分枝就不会发生<br>默认最小限制<span class="hljs-number">1</span>，即最高复杂度。min_samples_leaf↑，降 低模型复杂度，向图像的左边移动<br><br>min_samples_split ： <br>一个节点必须要包含至少min_samples_split个训练样本，这个节点才允许被分枝， 否则分枝就不会发生<br>默认最小限制<span class="hljs-number">2</span>，即最高复杂度。min_samples_split↑，降 低模型复杂度，向图像的左边移动<br><br>max_features ： <br>max_features限制分枝时考虑的特征个数，超过限制个数的特征都会被舍弃，默认 值为总特征个数开平方取整<br>默认是特征总数的开平方，位于中间复杂度。 既可以向复杂度升高的方向，也可以向复杂度降低的方向调参。 max_features↓，模型更简单；图像左移； max_features↑，模型更复杂，图像右移max_features。 是唯一的既能够让模型更简单，也能够让模型更复杂的参数，所以在 调整这个参数的时候，需要考虑我们调参的方向<br><br>criterion  ：<br>不纯度的衡量指标，有基尼系数和信息熵两种选择<br>一般使用gini<br><br>泛化误差：来衡量模型在未知数据上的准确率的指标，叫做泛化误差 当模型在未知数据（测试集）<br>上表现糟糕时，我们说模型的泛化程度不够，泛化误差大，模型的效果不好。泛化误 差受到模型的结构（复杂度）影响。<br>看下面这张图，它准确地描绘了泛化误差与模型复杂度的关系，当模型太复杂，模型就会过拟合，泛化能力就不够，所以泛化误差大。<br>当模型太简单，模型就会欠拟合，拟合能力就不够，所 以误差也会大。只有当模型的复杂度刚刚好的才能够达到泛化误差最小的目标，我们追求的就是位于中间的平衡点。<br><span class="hljs-number">1</span>）对于随机森林而言，树的深度越深，枝叶越多，模型越复杂 <br><span class="hljs-number">2</span>）随机森林这样的树模型的目标，是减少模型复杂度，把模型往图像的左边移动<br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/python-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">python+机器学习+数据分析</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
+                    
+                  </div>
+                
+              </div>
+              <!-- 
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+               -->
+
+              
+                <p class="note note-warning">
+                <strong>本文作者: </strong><a href="/">水寿先生</a> <br>
+                <strong>本文链接: </strong><a href="http://chen320.github.io/2022/07/15/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97%E5%A4%84%E7%90%86%E4%BA%8C%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98/">http://chen320.github.io/2022/07/15/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97%E5%A4%84%E7%90%86%E4%BA%8C%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98/</a> <br>
+                <strong>版权声明: </strong>本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                </p>
+              
+
+
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/15/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">python-数据处理</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/14/Hexo-Fluid%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/">
+                        <span class="hidden-mobile">Hexo-Fluid博客主题美化</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"7GgfPxgdU2CcwlhdqMFDascs-gzGzoHsz","appKey":"iQjxbFjeMOGRmMhYhY2jA9sp","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/liangbian.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/xiantiao.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/dianji.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js"></script>
+<script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
