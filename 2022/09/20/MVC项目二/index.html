@@ -1,0 +1,570 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/null">
+  <link rel="icon" href="https://ts1.cn.mm.bing.net/th/id/R-C.f408176d301eba722a97bcc4d045cbc7?rik=J%2bK47GXYGgKyOw&amp;riu=http%3a%2f%2fstatic.oschina.net%2fuploads%2fspace%2f2015%2f0629%2f165329_EdoG_1767531.png&amp;ehk=ZIVbH06spduNSMSM0N3kkzz8ylv0o4zwwb%2fySRRRV00%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Chentao">
+  <meta name="keywords" content="">
+  <meta name="description" content="c#+MVC框架-新闻管理系统二（登录功能）一、创建一个控制器（Controllers) 右击Controllers，添加，选择一个空的控制器即可，便于我们操作 创建完后的界面如下图所示：二、在控制器中创建Login视图 在创建完控制器后会在Views视图文件下同步生成一个News文件夹 创建完login视图后会在News文件夹下生成一个Login.cshtml文件，这个就是我们要设计的界面 同步">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c#—MVC框架-新闻管理系统二（登录功能）">
+<meta property="og:url" content="http://chen320.github.io/2022/09/20/MVC%E9%A1%B9%E7%9B%AE%E4%BA%8C/index.html">
+<meta property="og:site_name" content="Chen&#39;s Blog">
+<meta property="og:description" content="c#+MVC框架-新闻管理系统二（登录功能）一、创建一个控制器（Controllers) 右击Controllers，添加，选择一个空的控制器即可，便于我们操作 创建完后的界面如下图所示：二、在控制器中创建Login视图 在创建完控制器后会在Views视图文件下同步生成一个News文件夹 创建完login视图后会在News文件夹下生成一个Login.cshtml文件，这个就是我们要设计的界面 同步">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img1.imgtp.com/2022/09/21/z8It2EYn.png">
+<meta property="og:image" content="https://img1.imgtp.com/2022/09/21/TERQxttv.png">
+<meta property="og:image" content="https://img1.imgtp.com/2022/09/21/cFlM4LWP.png">
+<meta property="og:image" content="https://img1.imgtp.com/2022/09/21/UzdqLj8c.png">
+<meta property="og:image" content="https://img1.imgtp.com/2022/09/21/EgLH3zTZ.png">
+<meta property="og:image" content="https://img1.imgtp.com/2022/09/22/jkXRtMvE.png">
+<meta property="og:image" content="https://img1.imgtp.com/2022/09/22/5kxPr2qR.png">
+<meta property="og:image" content="https://img1.imgtp.com/2022/09/22/Dze05wSt.png">
+<meta property="og:image" content="https://img1.imgtp.com/2022/09/22/VAgAK3Xo.png">
+<meta property="og:image" content="https://img1.imgtp.com/2022/09/22/NNJcU57u.png">
+<meta property="article:published_time" content="2022-09-20T14:22:16.000Z">
+<meta property="article:modified_time" content="2022-09-22T12:17:44.147Z">
+<meta property="article:author" content="Chentao">
+<meta property="article:tag" content="c#学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img1.imgtp.com/2022/09/21/z8It2EYn.png">
+  
+  <title>c#—MVC框架-新闻管理系统二（登录功能） - Chen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/gundong.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/dazi.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chen320.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"7GgfPxgdU2CcwlhdqMFDascs-gzGzoHsz","app_key":"iQjxbFjeMOGRmMhYhY2jA9sp","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>水寿先生</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                个人
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.pixabay.com/photo/2021/12/27/21/37/church-6898286_960_720.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="c#—MVC框架-新闻管理系统二（登录功能）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-09-20 22:22" pubdate>
+        September 20, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        阅读量:<span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">c#—MVC框架-新闻管理系统二（登录功能）</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：September 22, 2022 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="c-MVC框架-新闻管理系统二（登录功能）"><a href="#c-MVC框架-新闻管理系统二（登录功能）" class="headerlink" title="c#+MVC框架-新闻管理系统二（登录功能）"></a>c#+MVC框架-新闻管理系统二（登录功能）</h1><h3 id="一、创建一个控制器（Controllers"><a href="#一、创建一个控制器（Controllers" class="headerlink" title="一、创建一个控制器（Controllers)"></a>一、创建一个控制器（Controllers)</h3><ul>
+<li>右击Controllers，添加，选择一个空的控制器即可，便于我们操作<br><img src="https://img1.imgtp.com/2022/09/21/z8It2EYn.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt=""></li>
+<li>创建完后的界面如下图所示：<br><img src="https://img1.imgtp.com/2022/09/21/TERQxttv.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt=""><h3 id="二、在控制器中创建Login视图"><a href="#二、在控制器中创建Login视图" class="headerlink" title="二、在控制器中创建Login视图"></a>二、在控制器中创建Login视图</h3><img src="https://img1.imgtp.com/2022/09/21/cFlM4LWP.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="3.png"></li>
+<li>在创建完控制器后会在Views视图文件下同步生成一个News文件夹</li>
+<li>创建完login视图后会在News文件夹下生成一个Login.cshtml文件，这个就是我们要设计的界面</li>
+<li>同步也会生成_Layout.cshtml布局文件</li>
+<li>在下图中注明相应包的引入来源<br><img src="https://img1.imgtp.com/2022/09/21/UzdqLj8c.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="1.png"></li>
+<li>在刚创建的Login视图时也许会报错，这是因为运行文件的开始控制器不对，现在视图是login，但是开始视图设置的index，所以我们需要按照下面的界面进行操作<br><img src="https://img1.imgtp.com/2022/09/21/EgLH3zTZ.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="2.png"><h3 id="三、引入layui-登录框架"><a href="#三、引入layui-登录框架" class="headerlink" title="三、引入layui 登录框架"></a>三、引入layui 登录框架</h3><a target="_blank" rel="noopener" href="https://www.moyublog.com/demo/93_20475.html">https://www.moyublog.com/demo/93_20475.html</a></li>
+<li>在上面的网址中查看源代码，复制到我们的cshtml文件中去</li>
+<li>前提需要我们下载layui的js和css引入文件，可以自己创建一个js和css文件夹，然后以后所有的相应文件都放到里面。</li>
+<li>登录代码如下</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><code class="hljs c">@&#123;<br>    ViewBag.Title = <span class="hljs-string">&quot;Login&quot;</span>;<br>&#125;<br><br>    &lt;meta charset=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;<br>    &lt;title&gt;登录界面&lt;/title&gt;<br>    &lt;!--basic_css--&gt;<br>    &lt;link rel=<span class="hljs-string">&quot;stylesheet&quot;</span> type=<span class="hljs-string">&quot;text/css&quot;</span> href=<span class="hljs-string">&quot;/css/layui.css&quot;</span> /&gt;<br>    &lt;meta name=<span class="hljs-string">&quot;viewport&quot;</span><br>          content=<span class="hljs-string">&quot;width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no&quot;</span>&gt;<br><br>    &lt;style type=<span class="hljs-string">&quot;text/css&quot;</span>&gt;<br>        body &#123;<br>            background-image: url(/img/lg-bg.jpg);<br>            background-position: <span class="hljs-number">14</span>px <span class="hljs-number">14</span>px;<br>            background-repeat: no-repeat;<br>            background-position: center center;<br>            background-attachment: fixed;<br>            background-size: cover;<br>        &#125;<br><br>        .layui-input &#123;<br>            height: <span class="hljs-number">45</span>px;<br>            width: <span class="hljs-number">87</span>%;<br>            padding-left: <span class="hljs-number">5</span>px;<br>            font-size: <span class="hljs-number">16</span>px;<br>            display: <span class="hljs-keyword">inline</span>-block;<br>        &#125;<br><br>        .layui-btn &#123;<br>            height: <span class="hljs-number">45</span>px;<br>        &#125;<br><br>        .captcha-input &#123;<br>            height: <span class="hljs-number">45</span>px;<br>            padding-left: <span class="hljs-number">5</span>px;<br>            font-size: <span class="hljs-number">16</span>px;<br>        &#125;<br><br>        .layui-form &#123;<br>            width: <span class="hljs-number">30</span>%;<br>            height: <span class="hljs-number">60</span>%;<br>            margin: <span class="hljs-number">0</span> <span class="hljs-keyword">auto</span>;<br>            margin-top: <span class="hljs-number">7</span>%;<br>            padding: <span class="hljs-number">15</span>px <span class="hljs-number">28</span>px <span class="hljs-number">0</span>px;<br>            background: <span class="hljs-meta">#fff;</span><br>        &#125;<br><br>        .layui-input-block &#123;<br>            margin-left: <span class="hljs-number">0</span>;<br>        &#125;<br><br><br><br>            .layui-input-block a &#123;<br>                color: blue;<br>                <span class="hljs-keyword">float</span>: right;<br>                line-height: <span class="hljs-number">30</span>px;<br>                font-size: <span class="hljs-number">14</span>px;<br>            &#125;<br><br>        h1 &#123;<br>            text-align: center;<br>            color: #<span class="hljs-number">1</span>d598e;<br>        &#125;<br><br>        input.text &#123;<br>            text-align: center;<br>            padding: <span class="hljs-number">10</span>px <span class="hljs-number">20</span>px;<br>            width: <span class="hljs-number">300</span>px;<br>        &#125;<br><br>        <span class="hljs-meta">#canvas &#123;</span><br>            <span class="hljs-keyword">float</span>: right;<br>            margin-right: <span class="hljs-number">4</span>%;<br>            display: <span class="hljs-keyword">inline</span>-block;<br>            border: <span class="hljs-number">1</span>px solid <span class="hljs-meta">#ccc;</span><br>            border-radius: <span class="hljs-number">5</span>px;<br>            cursor: pointer;<br>        &#125;<br><br>        .code &#123;<br>            width: <span class="hljs-number">400</span>px;<br>            margin: <span class="hljs-number">0</span> <span class="hljs-keyword">auto</span>;<br>        &#125;<br><br>        .input-val &#123;<br>            width: <span class="hljs-number">60</span>%;<br>            height: <span class="hljs-number">45</span>px;<br>            font-size: <span class="hljs-number">16</span>px;<br>            border-radius: <span class="hljs-number">5</span>px;<br>            border: <span class="hljs-number">1</span><span class="hljs-function">px solid <span class="hljs-title">rgba</span><span class="hljs-params">(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">.2</span>)</span></span>;<br>        &#125;<br><br>        .decrib &#123;<br>            font-size: <span class="hljs-number">16</span>px;<br>        &#125;<br>    &lt;/style&gt;<br><br>    &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span>=</span><span class="hljs-string">&quot;layui-form&quot;</span>&gt;<br>        &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span>=</span><span class="hljs-string">&quot;layui-form-item&quot;</span>&gt;<br>            &lt;h1&gt;用&amp;nbsp;户&amp;nbsp;登&amp;nbsp;录&lt;/h1&gt;<br>        &lt;/div&gt;<br><br>        &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span>=</span><span class="hljs-string">&quot;layui-form-item&quot;</span>&gt;<br>            &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span>=</span><span class="hljs-string">&quot;layui-input-block&quot;</span>&gt;<br>                &lt;span <span class="hljs-class"><span class="hljs-keyword">class</span>=</span><span class="hljs-string">&quot;decrib&quot;</span>&gt;账号：&lt;/span&gt;<br>                &lt;input type=<span class="hljs-string">&quot;text&quot;</span> name=<span class="hljs-string">&quot;username&quot;</span> id=<span class="hljs-string">&quot;username&quot;</span> placeholder=<span class="hljs-string">&quot;请输入账号&quot;</span> autocomplete=<span class="hljs-string">&quot;off&quot;</span> class=<span class="hljs-string">&quot;layui-input&quot;</span><br>                       autofocus required&gt;<br>            &lt;/div&gt;<br>        &lt;/div&gt;<br><br>        &lt;div class=<span class="hljs-string">&quot;layui-form-item&quot;</span>&gt;<br>            &lt;div class=<span class="hljs-string">&quot;layui-input-block&quot;</span>&gt;<br>                &lt;span class=<span class="hljs-string">&quot;decrib&quot;</span>&gt;密码：&lt;/span&gt;<br>                &lt;input type=<span class="hljs-string">&quot;password&quot;</span> name=<span class="hljs-string">&quot;password&quot;</span> id=<span class="hljs-string">&quot;password&quot;</span> placeholder=<span class="hljs-string">&quot;请输入密码&quot;</span> autocomplete=<span class="hljs-string">&quot;off&quot;</span> class=<span class="hljs-string">&quot;layui-input&quot;</span><br>                       required&gt;<br>            &lt;/div&gt;<br>        &lt;/div&gt;<br><br>        &lt;br&gt;<br>        &lt;div class=<span class="hljs-string">&quot;layui-form-item&quot;</span>&gt;<br>            &lt;div class=<span class="hljs-string">&quot;layui-input-block&quot;</span>&gt;<br>                &lt;button class=<span class="hljs-string">&quot;layui-btn layui-btn-bypercent-left btn&quot;</span> id=<span class="hljs-string">&quot;submit&quot;</span> type=<span class="hljs-string">&quot;button&quot;</span>&gt;登 录&lt;/button&gt;<br>                &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp;<br>                &lt;a <span class="hljs-class"><span class="hljs-keyword">class</span>=</span><span class="hljs-string">&quot;layui-btn layui-btn-bypercent-right&quot;</span> style=<span class="hljs-string">&quot;color:#fff;line-height:45px;font-size:20px;&quot;</span> href=<span class="hljs-string">&quot;Register.html&quot;</span> id=<span class="hljs-string">&quot;register&quot;</span>&gt;注 册&lt;/a&gt;<br>            &lt;/div&gt;<br>        &lt;/div&gt;<br>        &lt;br&gt;<br>        &lt;br&gt;<br>    &lt;/div&gt;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>因为在layout中跟随的是MVC框架中的书写结构，所以在上述的html代码中开始标签和结束标签都在原有的基础上删除了，可以从网上查阅更多资料深入了解。</p>
+<h3 id="四、通过Ajax技术实现登录"><a href="#四、通过Ajax技术实现登录" class="headerlink" title="四、通过Ajax技术实现登录"></a>四、通过Ajax技术实现登录</h3><ul>
+<li>首先把layui框架的引用方式删除，使用我们内部设定好的<br><img src="https://img1.imgtp.com/2022/09/22/jkXRtMvE.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="1.png"></li>
+<li>然后书写Ajax代码连接<br><img src="https://img1.imgtp.com/2022/09/22/5kxPr2qR.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="2.png"><br><img src="https://img1.imgtp.com/2022/09/22/Dze05wSt.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="3.png"></li>
+<li>在控制器中创建一个方法（不用创建视图）<br><img src="https://img1.imgtp.com/2022/09/22/VAgAK3Xo.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="4.png"></li>
+<li>因为登录成功后跳转的是Index视图界面，所以我们需要在News控制器下创建Index视图<br><img src="https://img1.imgtp.com/2022/09/22/NNJcU57u.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="5.png"><br>可以先在数据库手动加入一个账号密码，输入成功后会跳转到Index界面</li>
+</ul>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/c-%E5%90%8E%E7%AB%AF%E5%92%8C%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91/">c#后端和网页开发</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/c-%E5%AD%A6%E4%B9%A0/">c#学习</a>
+                    
+                  </div>
+                
+              </div>
+              <!-- 
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+               -->
+
+              
+                <p class="note note-warning">
+                <strong>本文作者: </strong><a href="/">水寿先生</a> <br>
+                <strong>本文链接: </strong><a href="http://chen320.github.io/2022/09/20/MVC%E9%A1%B9%E7%9B%AE%E4%BA%8C/">http://chen320.github.io/2022/09/20/MVC%E9%A1%B9%E7%9B%AE%E4%BA%8C/</a> <br>
+                <strong>版权声明: </strong>本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                </p>
+              
+
+
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/20/MVC%E9%A1%B9%E7%9B%AE%E4%B8%80/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">c#—MVC框架-新闻管理系统一</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/06/Tomcat%E5%92%8CIDEA%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
+                        <span class="hidden-mobile">Tomcat和IDEA的安装配置</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"7GgfPxgdU2CcwlhdqMFDascs-gzGzoHsz","appKey":"iQjxbFjeMOGRmMhYhY2jA9sp","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/liangbian.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/xiantiao.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
+<script src="D:/Hexo/node_modules/hexo-theme-fluid/source/js/dianji.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js"></script>
+<script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
