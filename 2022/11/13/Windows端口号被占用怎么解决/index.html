@@ -16,27 +16,23 @@
   <meta name="description" content="">
   <meta name="author" content="Chentao">
   <meta name="keywords" content="">
-  <meta name="description" content="gitlab的基本应用1.创建gitlab账号，并设置自己的SSH gitlab注册 SSH的生成及使用上面链接中内含教程链接，此处不多说  2.创建仓库 在自己的项目组里面创建自己的仓库（new project） 此处举例创建名为demo（只有一个readme文件） 打开git bash命令窗口进行如下操作：(1) 从gitlab仓库中克隆到本地（此处克隆到桌面）注：此处的地址就是clone的H">
+  <meta name="description" content="Windows下端口被占用怎么解决？ 随着我们在电脑安装的程序软件不断增加，特别容易造成多程序共用一个端口号的问题 当同时打开共用一个端口号的程序时，首先打开的会正常打开，但是在打开第二个程序的时候，此端口号已经被第一个占用了（打不开）。注意：一般两个用依赖关系的两个软件程序不会造成端口冲突，也就是说当打开第二个软件程序的时候，第一个大概率处于空闲状态。 1、电脑快捷键window+r​，然后输入">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gitlab的使用">
-<meta property="og:url" content="http://chen320.github.io/2021/12/06/gitlab%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="Windows端口被占用怎么解决？">
+<meta property="og:url" content="http://chen320.github.io/2022/11/13/Windows%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3/index.html">
 <meta property="og:site_name" content="Chen&#39;s Blog">
-<meta property="og:description" content="gitlab的基本应用1.创建gitlab账号，并设置自己的SSH gitlab注册 SSH的生成及使用上面链接中内含教程链接，此处不多说  2.创建仓库 在自己的项目组里面创建自己的仓库（new project） 此处举例创建名为demo（只有一个readme文件） 打开git bash命令窗口进行如下操作：(1) 从gitlab仓库中克隆到本地（此处克隆到桌面）注：此处的地址就是clone的H">
+<meta property="og:description" content="Windows下端口被占用怎么解决？ 随着我们在电脑安装的程序软件不断增加，特别容易造成多程序共用一个端口号的问题 当同时打开共用一个端口号的程序时，首先打开的会正常打开，但是在打开第二个程序的时候，此端口号已经被第一个占用了（打不开）。注意：一般两个用依赖关系的两个软件程序不会造成端口冲突，也就是说当打开第二个软件程序的时候，第一个大概率处于空闲状态。 1、电脑快捷键window+r​，然后输入">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s2.loli.net/2022/04/04/gAfHaJSn4KqbDdL.png">
-<meta property="og:image" content="https://s2.loli.net/2022/04/04/uXyC7mwYAczNnei.png">
-<meta property="og:image" content="https://s2.loli.net/2022/04/04/AxO2YV9XyhvSqcp.png">
-<meta property="og:image" content="https://s2.loli.net/2022/04/04/5Kupj1nxhgG23Ok.png">
-<meta property="og:image" content="https://s2.loli.net/2022/04/04/Glkja8VysJARFiP.png">
-<meta property="og:image" content="https://s2.loli.net/2022/04/04/i1ICVk6wtAsSNzQ.png">
-<meta property="article:published_time" content="2021-12-06T14:22:16.000Z">
-<meta property="article:modified_time" content="2022-05-03T03:27:16.080Z">
+<meta property="og:image" content="https://s2.loli.net/2022/11/13/VtfPBlSQ15U8ihc.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/13/akVFnQXJNLrhAYS.png">
+<meta property="article:published_time" content="2022-11-13T08:22:16.000Z">
+<meta property="article:modified_time" content="2022-11-13T07:26:28.970Z">
 <meta property="article:author" content="Chentao">
-<meta property="article:tag" content="gitlab">
+<meta property="article:tag" content="解决端口占用">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/04/04/gAfHaJSn4KqbDdL.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/11/13/VtfPBlSQ15U8ihc.png">
   
-  <title>gitlab的使用 - Chen&#39;s Blog</title>
+  <title>Windows端口被占用怎么解决？ - Chen&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -201,7 +197,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="gitlab的使用">
+            <span class="h2" id="subtitle" title="Windows端口被占用怎么解决？">
               
             </span>
 
@@ -211,8 +207,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-12-06 22:22" pubdate>
-        December 6, 2021 pm
+      <time datetime="2022-11-13 16:22" pubdate>
+        November 13, 2022 pm
       </time>
     </span>
   
@@ -222,7 +218,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      832 字
+      350 字
     </span>
   
 
@@ -231,7 +227,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3 分钟
+      1 分钟
     </span>
   
 
@@ -268,33 +264,22 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">gitlab的使用</h1>
+            <h1 style="display: none">Windows端口被占用怎么解决？</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：May 3, 2022 am
+                  本文最后更新于：November 13, 2022 pm
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="gitlab的基本应用"><a href="#gitlab的基本应用" class="headerlink" title="gitlab的基本应用"></a>gitlab的基本应用</h1><h3 id="1-创建gitlab账号，并设置自己的SSH"><a href="#1-创建gitlab账号，并设置自己的SSH" class="headerlink" title="1.创建gitlab账号，并设置自己的SSH"></a>1.创建gitlab账号，并设置自己的SSH</h3><ul>
-<li><em><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qianqiu-1026/p/8543588.html">gitlab注册</a></em></li>
-<li>SSH的生成及使用上面链接中内含教程链接，此处不多说</li>
-</ul>
-<h3 id="2-创建仓库"><a href="#2-创建仓库" class="headerlink" title="2.创建仓库"></a>2.创建仓库</h3><ul>
-<li>在自己的项目组里面创建自己的仓库（new project）<br><img src="https://s2.loli.net/2022/04/04/gAfHaJSn4KqbDdL.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="K_K4_8IP41SEII_RLMZ4@BG.png"></li>
-<li>此处举例创建名为demo（只有一个readme文件）</li>
-<li>打开git bash命令窗口进行如下操作：<br>(1) 从gitlab仓库中克隆到本地（此处克隆到桌面）<br><img src="https://s2.loli.net/2022/04/04/uXyC7mwYAczNnei.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="JBNTJKP2_B_RG62J23372WR.png"><br><img src="https://s2.loli.net/2022/04/04/AxO2YV9XyhvSqcp.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="W7SF_L`2VJ6232_1SKVXG09.png"><br>注：此处的地址就是clone的HTTPS<br>(2) clone后会在桌面上显示你的远程仓库文件<br>(3) 把你的项目文件放到桌面的demo文件中<br>(4) 可以通过以下命令看一下demo文件的状态<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs maxima">cd <span class="hljs-built_in">demo</span><br>git <span class="hljs-built_in">status</span><br></code></pre></td></tr></table></figure>
-<img src="https://s2.loli.net/2022/04/04/5Kupj1nxhgG23Ok.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="@O1CXNN__VU1~_HFMY_2L_R.png"><br>注：此时项目文件中的README.md文件替换了demo中的README.md文件，此时已经在本地的暂存区了<br>而下面的一些文件在demo文件中没有，只是存在于本地目录下<br>(5) 把在本地目录下新加的文件add到暂存区<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">git <span class="hljs-builtin-name">add</span> .<br>注：.代表全部文件<br></code></pre></td></tr></table></figure>
-(6) 把暂存区的文件commit到仓库中<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">git <span class="hljs-keyword">commit</span> -m &quot;第一次提交微信小程序代码&quot;<br>注： &quot;&quot;里面的东西一定要写清楚，这代表着你这次干的什么事，可以看<span class="hljs-keyword">commit</span>记录<br></code></pre></td></tr></table></figure>
-(7) 最后push到gitlab远程仓库<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git push origin <span class="hljs-keyword">master</span><br><span class="hljs-title">注：origin</span>代表远程，<span class="hljs-literal">master</span>代表push的仓库名<br></code></pre></td></tr></table></figure>
-(8) 最后你就可以在gitlab界面中刷新看到你的项目文件了，如下图所示：<br><img src="https://s2.loli.net/2022/04/04/Glkja8VysJARFiP.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="W18QH__7_15L@B092OWYK~O.png"></li>
-</ul>
-<h3 id="3-创建分支"><a href="#3-创建分支" class="headerlink" title="3.创建分支"></a>3.创建分支</h3><ul>
-<li>因为一个项目工程不是一个人完成的，需要一个团队进行不同的工作，所以团队成员需要创建一个自己的分支来更新自己的项目进度<br>创建方法如下：<br>(1) 打开你的gitbash命令窗口（在主仓库文件下）<br>(2) 创建分支（名字自定义）<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git branch chen</span><br></code></pre></td></tr></table></figure>
-(3) 转换到分支下<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git checkout chen</span><br></code></pre></td></tr></table></figure>
-(4)最后push到你的gitlab远程仓库中即可<br>注：在本地通过命令行创建分支后会同步到远程仓库中<br>可以创建合并请求，如下图所示：<br><img src="https://s2.loli.net/2022/04/04/i1ICVk6wtAsSNzQ.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="G_5NG1FCSKXSULB_RK_K6`F.png"></li>
-</ul>
+              <h1 id="Windows下端口被占用怎么解决？"><a href="#Windows下端口被占用怎么解决？" class="headerlink" title="Windows下端口被占用怎么解决？"></a>Windows下端口被占用怎么解决？</h1><blockquote>
+<p>随着我们在电脑安装的程序软件不断增加，特别容易造成多程序共用一个端口号的问题</p>
+<p>当同时打开共用一个端口号的程序时，首先打开的会正常打开，但是在打开第二个程序的时候，此端口号已经被第一个占用了（打不开）。注意：一般两个用依赖关系的两个软件程序不会造成端口冲突，也就是说当打开第二个软件程序的时候，第一个大概率处于空闲状态。</p>
+<h5 id="1、电脑快捷键window-r​，然后输入cmd打开命令行"><a href="#1、电脑快捷键window-r​，然后输入cmd打开命令行" class="headerlink" title="1、电脑快捷键window+r​，然后输入cmd打开命令行"></a>1、电脑快捷键window+r​，然后输入cmd打开命令行</h5><p><img src="https://s2.loli.net/2022/11/13/VtfPBlSQ15U8ihc.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="cmd.png"></p>
+<h5 id="2、输入netstat-ano-findstr-8080​（我以被占用的端口号为8080端口为例演示）"><a href="#2、输入netstat-ano-findstr-8080​（我以被占用的端口号为8080端口为例演示）" class="headerlink" title="2、输入netstat -ano|findstr 8080​（我以被占用的端口号为8080端口为例演示）"></a>2、输入netstat -ano|findstr 8080​（我以被占用的端口号为8080端口为例演示）</h5><p><img src="https://s2.loli.net/2022/11/13/akVFnQXJNLrhAYS.png" srcset="http://images.shejidaren.com/wp-content/uploads/2015/11/dribbble-gif-2.gif" lazyload alt="select.png"></p>
+<h5 id="3、Ctrl-Alt-delete打开任务管​​​理器。​​找到8080端口号对应的PID（此处8080端口对应的PID为8568，选中后结束任务即可）"><a href="#3、Ctrl-Alt-delete打开任务管​​​理器。​​找到8080端口号对应的PID（此处8080端口对应的PID为8568，选中后结束任务即可）" class="headerlink" title="3、Ctrl+Alt+delete打开任务管​​​理器。​​找到8080端口号对应的PID（此处8080端口对应的PID为8568，选中后结束任务即可）"></a>3、Ctrl+Alt+delete打开任务管​​​理器。​​找到8080端口号对应的PID（此处8080端口对应的PID为8568，选中后结束任务即可）</h5><p>通过上述的三步，端口复占问题就被解决了</p>
+</blockquote>
 
             </div>
             <hr>
@@ -304,7 +289,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/gitlab/">gitlab</a>
+                      <a class="hover-with-bg" href="/categories/%E7%AB%AF%E5%8F%A3%E9%97%AE%E9%A2%98/">端口问题</a>
                     
                   </div>
                 
@@ -312,7 +297,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/gitlab/">gitlab</a>
+                      <a class="hover-with-bg" href="/tags/%E8%A7%A3%E5%86%B3%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8/">解决端口占用</a>
                     
                   </div>
                 
@@ -328,7 +313,7 @@
               
                 <p class="note note-warning">
                 <strong>本文作者: </strong><a href="/">水寿先生</a> <br>
-                <strong>本文链接: </strong><a href="http://chen320.github.io/2021/12/06/gitlab%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">http://chen320.github.io/2021/12/06/gitlab%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</a> <br>
+                <strong>本文链接: </strong><a href="http://chen320.github.io/2022/11/13/Windows%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3/">http://chen320.github.io/2022/11/13/Windows%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3/</a> <br>
                 <strong>版权声明: </strong>本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
                 </p>
               
@@ -339,15 +324,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/12/06/colab/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">colab</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/09/22/npm%E7%BD%91%E7%BB%9C%E9%93%BE%E6%8E%A5%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/">
+                        <span class="hidden-mobile">request to https://registry.npm.taobao.org/vue-loader failed</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
